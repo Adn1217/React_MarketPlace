@@ -7,15 +7,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Esta es la primera entrega, <code>el codigo</code> será editado próximamente.
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/Adn1217/React_MarketPlace"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+           Repositorio donde se encontrará mi aplicación de mercado en línea en <strong>React</strong>.
         </a>
       </header>
     </div>
