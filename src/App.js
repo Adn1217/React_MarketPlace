@@ -1,6 +1,6 @@
 import './assets/css/styles.css';
 import Header from './assets/components/Header';
-import Suggested from './assets/components/Suggesed';
+import Suggested from './assets/components/Suggested';
 import Discounts from './assets/components/Discounts';
 import Footer from './assets/components/Footer';
 

@@ -27,8 +27,25 @@
   color: white;
 }
 
+.navbar-nav, .nav-item a, .navbar-brand, btn {
+  color: white;
+}
+
+.navbar-nav .nav-link.active {
+  color: #61dafb;
+  font-weight: bold;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: #61dafb;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.dropdown-menu li a {
+  color: black;
 }
 
 @keyframes App-logo-spin {
