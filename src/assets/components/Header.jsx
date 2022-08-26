@@ -6,7 +6,7 @@ const Header = () => {
         <div>
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                {/* <h1>Este es el encabezado (NavBar)</h1> */}
+                <h2>MarketPlace</h2>
                 <nav class="navbar navbar-dark navbar-expand-lg App-header">
                     <div class="container-fluid">
                         {/* <a class="navbar-brand" href="#">Navbar</a> */}
