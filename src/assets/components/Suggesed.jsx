@@ -5,7 +5,7 @@ const Suggested = () => {
         <div>
             <h1>Aquí van los artículos sugeridos</h1>
                 <p>
-                Esta es la primera entrega, <code>el codigo</code> será editado próximamente.
+                Esta es la segunda entrega, <code>el codigo</code> será editado próximamente.
                 </p>
                 <a
                 className="App-link"
