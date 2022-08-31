@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+.App-logo, .ShoppingChart-logo {
   /* height: 40vmin; */
   height: 56px;
   width: 56px;
@@ -22,9 +22,47 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+/* .App-header-options {
+  justify-content: space-around;
+} */
+
+.App-header-Chart {
+  border: solid;
+  border-width: 2px;
+  border-color: #282c34;
+  /* justify-content: right; */
+}
+
+.App-header-Chart:hover {
+  border-color: white;
+}
+
+.brand {
+  justify-content: left  ;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+  text-align: center;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: row;
+  width: 54rem;
 }
 
 .navbar-nav, .nav-item a, .navbar-brand, btn {
