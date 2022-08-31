@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+.App-logo, .ShoppingChart-logo {
   /* height: 40vmin; */
   height: 56px;
   width: 56px;
@@ -22,9 +22,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+/* .App-header-options {
+  justify-content: space-around;
+} */
+
+/* .App-header-Chart {
+  justify-content: right;
+} */
+
+.brand {
+  justify-content: left  ;
 }
 
 .navbar-nav, .nav-item a, .navbar-brand, btn {

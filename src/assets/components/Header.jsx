@@ -1,15 +1,17 @@
 import logo from '../../logo.svg';
 import React from 'react';
+import shoppingCart from '../images/shopping-cart.png'
 
 const Header = () => {
     return (
         <div>
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h2>MarketPlace</h2>
-                <nav class="navbar navbar-dark navbar-expand-lg App-header">
+                <div className="App-header brand col-3">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h2>MarketPlace</h2>
+                </div>
+                <nav class="navbar navbar-dark navbar-expand-lg App-header-options col-8">
                     <div class="container-fluid">
-                        {/* <a class="navbar-brand" href="#">Navbar</a> */}
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -43,6 +45,10 @@ const Header = () => {
                         </div>
                     </div>
                 </nav>
+                <div className="App-header-Chart">
+                    <a href="#"><img src={shoppingCart} className="ShoppingChart-logo" alt="logo"/></a>
+                    {/* <a class="navbar-brand" href="#">Navbar</a> */}
+                </div>
             </header>
             <hr />
         </div>)
