@@ -31,9 +31,16 @@
   justify-content: space-around;
 } */
 
-/* .App-header-Chart {
-  justify-content: right;
-} */
+.App-header-Chart {
+  border: solid;
+  border-width: 3px;
+  border-color: #282c34;
+  /* justify-content: right; */
+}
+
+.App-header-Chart:hover {
+  border-color: white;
+}
 
 .brand {
   justify-content: left  ;
