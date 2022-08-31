@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <ItemListContainer />
+      <ItemListContainer tipo="Computador"/>
       <Suggested />
       <Discounts />
       <Footer />
