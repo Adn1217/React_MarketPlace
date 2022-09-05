@@ -1,5 +1,5 @@
 import React from 'react';
-import pcImage from '../images/pcImage.jpg';
+import pcImage from '../assets/images/pcImage.jpg';
 
 const ItemListContainer = ({tipo}) => {
   return (
