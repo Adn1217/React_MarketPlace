@@ -1,9 +1,9 @@
-import './assets/css/styles.css';
-import Header from './assets/components/Header';
-import Suggested from './assets/components/Suggested';
-import Discounts from './assets/components/Discounts';
-import Footer from './assets/components/Footer';
-import ItemListContainer from './assets/components/ItemListContainer';
+import './css/styles.css';
+import Header from './components/Header';
+import Suggested from './components/Suggested';
+import Discounts from './components/Discounts';
+import Footer from './components/Footer';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
