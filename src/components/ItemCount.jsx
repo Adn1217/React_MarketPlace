@@ -23,7 +23,6 @@ const ItemCount = ({Nombre, Marca, Anio, Precio, Cantidad}) => {
     
     useEffect (() => {
         setearSumarOff(!(Cantidad !== undefined && Cantidad>0));
-        console.log(SumarOff)
         setearRestarOff(true)
     }, [Cantidad])
 
@@ -43,7 +42,6 @@ const ItemCount = ({Nombre, Marca, Anio, Precio, Cantidad}) => {
     }
      
     function Restar () {
-        console.log(seleccionados)
         if(seleccionados > 0){
             CambiarSeleccionados(-1);
             setearSumarOff(false);
