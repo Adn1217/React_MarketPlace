@@ -46,11 +46,21 @@
 .Item-Quantity {
   display: flex;
   border: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #282c34;
   border-radius: 0.375rem;
   justify-content: space-around;
   padding: 5px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.opacidad {
+  opacity: 0.5;
 }
 
 .Sum-logo, .Substract-logo {
@@ -64,6 +74,7 @@
 .Item-Number {
   display: flex;
   justify-content: space-between;
+  text-align: center;
   /* height: 40vmin; */
   /* height: 30%;*/
   width: 100%;
