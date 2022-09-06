@@ -8,18 +8,25 @@ const ItemCount = ({Nombre, Marca, Anio, Precio, Cantidad}) => {
     const [seleccionados, setSeleccionados] = useState(0);
     const [SumarOff, setSumarOff] = useState(true);
     const [RestarOff, setRestarOff] = useState(true);
-    const [clase, setClase] = useState("col-md-3")
+    const [claseResta, setClaseResta] = useState("col-md-3")
+    const [claseSuma, setClaseSuma] = useState("col-md-3")
 
-    
-    useEffect (() => {
-        setSumarOff(!(Cantidad !== undefined && Cantidad>0));
-        setearClase(SumarOff);
-    }, [Cantidad])
+    function setearSumarOff (flag) {
+        setSumarOff(flag);
+        setClaseSuma("col-md-3" + (flag ? " opacidad" : ""));
+    }
 
-    function setearClase (obj) {
-        setClase("col-md-3" + Boolean(obj) * " opacidad");
+    function setearRestarOff (flag) {
+        setRestarOff(flag);
+        setClaseResta("col-md-3" + (flag ? " opacidad" : ""));
     }
     
+    useEffect (() => {
+        setearSumarOff(!(Cantidad !== undefined && Cantidad>0));
+        console.log(SumarOff)
+        setearRestarOff(true)
+    }, [Cantidad])
+
     function CambiarSeleccionados (num) {
         setSeleccionados(seleccionados + num);
     }
@@ -28,13 +35,10 @@ const ItemCount = ({Nombre, Marca, Anio, Precio, Cantidad}) => {
     function Sumar () {
         if(Cantidad > 0 && seleccionados < Cantidad){
             CambiarSeleccionados(1);
-            setRestarOff(false);
-            setSumarOff(seleccionados + 1 == Cantidad ? true : false);
-            setClase(SumarOff);
-            setClase(RestarOff);
+            setearRestarOff(false);
+            setearSumarOff(seleccionados + 1 == Cantidad ? true : false);
         }else{
-            setSumarOff(true);
-            setClase(SumarOff);
+            setearSumarOff(true);
         }
     }
      
@@ -42,24 +46,21 @@ const ItemCount = ({Nombre, Marca, Anio, Precio, Cantidad}) => {
         console.log(seleccionados)
         if(seleccionados > 0){
             CambiarSeleccionados(-1);
-            setSumarOff(false);
-            setClase(SumarOff);
-            setRestarOff(seleccionados - 1 == 0 ? true : false);
-            setClase(RestarOff);
+            setearSumarOff(false);
+            setearRestarOff(seleccionados - 1 == 0 ? true : false);
         }else{
-            setRestarOff(true);
-            setClase(RestarOff);
+            setearRestarOff(true);
         }
     }
   return (
     <div className="Item-Quantity">
-        <div id="Sumar" className={clase} onClick={Restar} >
+        <div id="Restar" className={claseResta} onClick={Restar} >
             <button href="#" disabled={RestarOff}><img src={substractLogo} className="Substract-logo" alt="logo"/></button>
         </div>
         <div className="col-md-6">
             <input  id="NumeroAComprar" type="text" className="form-control Item-Number" placeholder="Stock" aria-label="Stock" value = {seleccionados} disabled/>
         </div>
-        <div id="Restar" className={clase} onClick={Sumar}>
+        <div id="Sumar" className={claseSuma} onClick={Sumar}>
             <button href="#" disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
         </div>
         {/* <a class="navbar-brand" href="#">Navbar</a> */}
