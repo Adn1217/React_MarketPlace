@@ -4,7 +4,7 @@ import Item from './Item';
 import ItemCount from './ItemCount';
 let stockDataApi = 'stock.json';
 
-const ItemListContainer = ({tipo}) => {
+const ItemListContainer = () => {
 
     const [stock, setStock] = useState([]);
 
@@ -36,7 +36,7 @@ const ItemListContainer = ({tipo}) => {
     <div className="container imgContainer">
             {stock?.map((item) => 
                 <ul key={item.Nombre}>
-                    <Item tipo={tipo} {...item}/>
+                    <Item tipo={item.Tipo} {...item}/>
                 </ul>
             )}
     </div>

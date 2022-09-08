@@ -1,5 +1,6 @@
 [
     {
+        "Tipo": "Computador",
         "Nombre": "HP Gamer Ak021",
         "Marca": "ACER",
         "Anio": 2021,
@@ -7,6 +8,7 @@
         "Cantidad": 10
     },
     {
+        "Tipo": "Computador",
         "Nombre": "ASUS Intel V15",
         "Marca": "ASUS",
         "Anio": 2020,
@@ -14,6 +16,7 @@
         "Cantidad": 1
     },
     {
+        "Tipo": "Computador",
         "Nombre": "LENOVO Ideapad",
         "Marca": "LENOVO",
         "Anio": 2020,
