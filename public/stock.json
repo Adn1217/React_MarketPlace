@@ -1,20 +1,20 @@
 [
     {
-        "Nombre": "Computador 1",
+        "Nombre": "HP Gamer Ak021",
         "Marca": "ACER",
         "Anio": 2021,
         "Precio": 1350000,
         "Cantidad": 10
     },
     {
-        "Nombre": "Computador 2",
+        "Nombre": "ASUS Intel V15",
         "Marca": "ASUS",
         "Anio": 2020,
         "Precio": 1100000,
         "Cantidad": 1
     },
     {
-        "Nombre": "Computador 3",
+        "Nombre": "LENOVO Ideapad",
         "Marca": "LENOVO",
         "Anio": 2020,
         "Precio": 950000,
