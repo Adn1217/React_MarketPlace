@@ -106,6 +106,14 @@ button {
   max-width: 100%;
 }
 
+.imgContainer #Spinner {
+  display:block;
+  margin: 50px auto;
+  padding: 50px;
+  min-width: 10vh;
+  min-height: 10vh
+}
+
 .navbar-nav, .nav-item a, .navbar-brand, btn {
   color: white;
 }
