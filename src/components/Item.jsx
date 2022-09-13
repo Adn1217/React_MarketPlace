@@ -8,7 +8,7 @@ const Item = ({tipo, Nombre, Anio, Marca, Precio, Cantidad}) => {
 
   return (
     <div className="card">
-        <a href="#"><img src={pcImage} className="card-img-top" alt="pcImage1"/></a>
+        <a href="#"><img src={pcImage} className="card-img-top" alt="pcImage1"/></a >
         <div className="card-body">
             <p className="card-text">
                 <strong>Tipo:</strong> {tipo}<br/> 
