@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import ItemList from './ItemList';
 
 
-const ItemListContainer = () => {
+const ItemListContainer = ({setSelectedItem}) => {
 
   return (
     <div className="container imgContainer">
-        <ItemList />
+        <ItemList setSelectedItem={setSelectedItem}/>
     </div>
   );
 }

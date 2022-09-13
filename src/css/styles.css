@@ -106,6 +106,12 @@ button {
   max-width: 100%;
 }
 
+.detailContainer {
+  display: block;
+  width: 54rem;
+  max-width: 100%;
+}
+
 .imgContainer #Spinner {
   display:block;
   margin: 50px auto;
