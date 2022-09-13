@@ -34,7 +34,7 @@ const ItemListContainer = () => {
   return (
     <>
     {!(stock.length > 0) ?  (
-        <div id="Spinner" class="spinner-border text-primary" role="status">
+        <div id="Spinner" className="spinner-border text-primary" role="status">
         </div> ) : 
         (
             stock?.map((item) => 
