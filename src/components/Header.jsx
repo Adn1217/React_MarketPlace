@@ -8,7 +8,7 @@ const Header = () => {
             <header className="App-header">
                 <div className="App-header brand col-3">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h2>MarketPlace</h2>
+                    <a className="nav-link" href="/"><h2>MarketPlace</h2></a>
                 </div>
                 <nav className="navbar navbar-dark navbar-expand-lg App-header-options col-8">
                     <div className="container-fluid">
@@ -18,7 +18,7 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Home</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">Cuenta</a>
@@ -28,10 +28,10 @@ const Header = () => {
                                         Categorías
                                     </a>
                                     <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="#">Libros</a></li>
-                                        <li><a className="dropdown-item" href="#">Mascotas</a></li>
+                                        <li><a className="dropdown-item" href="/category/Libros">Libros</a></li>
+                                        <li><a className="dropdown-item" href="/category/Mascotas">Mascotas</a></li>
                                         <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="#">Tecnología</a></li>
+                                        <li><a className="dropdown-item" href="/category/Tecnologia">Tecnología</a></li>
                                     </ul>
                                 </li>
                                 {/* <li class="nav-item">

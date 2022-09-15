@@ -21,9 +21,8 @@ const ItemDetailContainer = ({selectedItem}) => {
                     let response = await fetch(detail);  
                     let data = await response.json();
                     console.log(data);
-                    console.log(id);
-                    let productSelected = data[id]
-                    // let productSelected = data.find((item) => item.id===id)
+                    // let productSelected = data[id]
+                    let productSelected = data.find((item) => item.id==id)
                     console.log(productSelected);
                     detailSelected = productSelected.Detalle
                     setDetalle(detailSelected);

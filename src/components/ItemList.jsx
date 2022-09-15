@@ -1,11 +1,11 @@
 
 import React, {useEffect, useState} from 'react';
 import Item from './Item';
-let stockDataApi = 'stock.json';
 
-const ItemListContainer = ({setSelectedItem}) => {
+const ItemListContainer = ({setSelectedItem, type}) => {
 
-    const [stock, setStock] = useState([]);
+    const [stock, setStock] = useState();
+    const msg ="No hay datos";
 
     useEffect( () => {
         async function doFetch(stockDataApi){
@@ -15,8 +15,13 @@ const ItemListContainer = ({setSelectedItem}) => {
                     let response = await fetch(stockDataApi);  
                     // let response = await fetch(`https://pokeapi.co/api/v2/pokemon/1`);
                     let data = await response.json();
-                    console.log("Productos: ",JSON.stringify(data))
+                    let products = data.filter((item) => item.Tipo === type);
+                    console.log(products)
+                    type !== undefined && (data = products);
+                    products?.length > 0 && (data = products);
+                    console.log(products)
                     mensaje = (data.length>0) ? `Se han encontrado ${data.length} productos.`:"No hay datos";
+                    console.log("Productos: ",JSON.stringify(data))
                     setStock(data);
                     return data;
                 }catch(error){
@@ -28,25 +33,25 @@ const ItemListContainer = ({setSelectedItem}) => {
                 }
             },2000)
         }
+        let stockDataApi = type == undefined ? 'stock.json' : '../stock.json';
         doFetch(stockDataApi);
     }
-    , []);
+    , [type]);
 
-    function itemSelection(id){
-        setSelectedItem(id);
-        console.log("Se ha seleccionado el producto ", id);
-    }
 
   return (
     <>
-    {!(stock.length > 0) ?  (
+    {!(stock !== undefined && stock.length >= 0) ?  (
         <div id="Spinner" className="spinner-border text-primary" role="status">
         </div> ) : 
-        (
-            stock?.map((item) => 
-                <ul key={item.id} id={item.id} onClick={()=>itemSelection(item.id)}>
-                    <Item tipo={item.Tipo} {...item} />
-                </ul> )
+        (     
+           stock?.length == 0 ? <p className="empty">{msg}</p> : 
+           (
+                stock?.map((item) => 
+                        <ul key={item.id} id={item.id} >
+                            <Item tipo={item.Tipo} {...item} setSelectedItem={setSelectedItem} />
+                        </ul> )
+            )
         )
     }
     </>
