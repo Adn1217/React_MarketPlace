@@ -6,6 +6,7 @@ import Discounts from './components/Discounts';
 import Footer from './components/Footer';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
 
@@ -13,12 +14,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <ItemListContainer setSelectedItem={setSelectedItem}/>
-      <ItemDetailContainer selectedItem={selectedItem}/>
-      <Suggested />
-      <Discounts />
-      <Footer />
+      <Router>
+        <Header />
+        <Routes >
+          <Route exact path='/' element={<ItemListContainer setSelectedItem={setSelectedItem} />} />
+          <Route exact path='/category/:id' element={<ItemListContainer setSelectedItem={setSelectedItem} />} />
+          <Route exact path='/item/:id' element={<ItemDetailContainer selectedItem={selectedItem} />} />
+
+          {/* <ItemListContainer setSelectedItem={setSelectedItem}/>
+          <ItemDetailContainer selectedItem={selectedItem}/>  */}
+        </Routes>
+        <Suggested />
+        <Discounts />
+        <Footer />
+      </Router>
     </div>
   );
 }
