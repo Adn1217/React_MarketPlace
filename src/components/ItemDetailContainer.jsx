@@ -13,14 +13,21 @@ const ItemDetailContainer = ({selectedItem}) => {
         async function doFetch(detail){
             setTimeout( async () => {
                 let mensaje;
+                let detailSelected;
                 try{
                     let response = await fetch(detail);  
                     let data = await response.json();
-                    let detalles = data.map((item) => item.Detalle)
-                    // console.log(JSON.stringify(detalles))
-                    console.log(JSON.stringify(detalles[selection]))
-                    setDetalle(detalles[selection]);
-
+                    let detalles = data.map((item) => {
+                        let id = item.id;
+                        let detalles = item.Detalle;
+                        let obj = {id,...detalles};
+                        return obj})
+                    console.log(JSON.stringify(detalles))
+                    // console.log(JSON.stringify(detalles[selection]))
+                    // setDetalle(detalles[selection]);
+                    detailSelected = detalles.find((item) => item.id===selection)
+                    setDetalle(detailSelected);
+                    console.log(detailSelected)
                     mensaje = (data.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
                     return detalles[selection];
                 }catch(error){

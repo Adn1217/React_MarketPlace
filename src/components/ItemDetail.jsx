@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 const ItemDetail = ({Procesador, RAM, Disco, ROM, Video, VideoRef}) => {
 
-  console.log("Item: ",Procesador, RAM, Disco, ROM, Video, VideoRef)
+  console.log("Detalle: ",Procesador, RAM, Disco, ROM, Video, VideoRef)
 
   const [itemSelected, setItemSelected] = useState(false);
 
