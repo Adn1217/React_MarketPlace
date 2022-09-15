@@ -86,13 +86,34 @@ button {
   justify-content: left  ;
 }
 
+.empty {
+  width: 100%;
+}
+
 .card {
   display: flex;
   justify-content: center;
   margin: 1%;
+  max-width: 18rem;
+  min-height: 12rem;
+  min-width: 12rem;
   text-align: center;
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card a {
+  height: 12rem;
+  justify-content:center;
+}
+
+.card-body {
+  min-height: 12rem;
+}
+
+.card-text {
+  min-height: 9rem;
 }
 
 .card:hover {

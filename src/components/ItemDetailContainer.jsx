@@ -1,28 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import ItemDetail from './ItemDetail';
+import {useParams} from 'react-router-dom';
 
-let detail = 'stock.json';
+let detail = '../stock.json';
 
 const ItemDetailContainer = ({selectedItem}) => {
 
     const [detalle, setDetalle] = useState([]);
     const [buscando, setBuscando] = useState();
+    const {id} = useParams();
+
     let selection = selectedItem;
 
     useEffect( () => {
-        async function doFetch(detail){
+        async function doFetch(id){
             setTimeout( async () => {
                 let mensaje;
+                let detailSelected;
                 try{
                     let response = await fetch(detail);  
                     let data = await response.json();
-                    let detalles = data.map((item) => item.Detalle)
-                    // console.log(JSON.stringify(detalles))
-                    console.log(JSON.stringify(detalles[selection]))
-                    setDetalle(detalles[selection]);
-
-                    mensaje = (data.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
-                    return detalles[selection];
+                    console.log(data);
+                    // let productSelected = data[id]
+                    let productSelected = data.find((item) => item.id==id)
+                    console.log(productSelected);
+                    detailSelected = productSelected.Detalle
+                    setDetalle(detailSelected);
+                    console.log(detailSelected)
+                    mensaje = (detailSelected.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                    return detailSelected;
                 }catch(error){
                     console.log("Ha ocurrido el siguiente error: ", error)
                     return error;
@@ -33,7 +39,7 @@ const ItemDetailContainer = ({selectedItem}) => {
                 }
             },2000)
         }
-        doFetch(detail);
+        doFetch(id);
         setBuscando(selection +1 ? true: false);
     },[selectedItem]);
 
