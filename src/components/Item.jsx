@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import pcImage from '../assets/images/pcImage.jpg';
 import bookImage from '../assets/images/bookImage.png';
 import ItemCount from './ItemCount';
