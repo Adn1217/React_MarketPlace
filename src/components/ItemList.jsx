@@ -49,7 +49,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
            (
                 stock?.map((item) => 
                         <ul key={item.id} id={item.id} >
-                            <Item tipo={item.Tipo} {...item} setSelectedItem={setSelectedItem} />
+                            <Item {...item} setSelectedItem={setSelectedItem} />
                         </ul> )
             )
         )

@@ -5,26 +5,30 @@ import ItemCount from './ItemCount';
 import {Link} from 'react-router-dom';
 
 const Item = (props) => {
-    const id = props.id
-    const tipo = props.tipo
-    const Cantidad = props.Cantidad
-    const setSelectedItem = props.setSelectedItem
-    let text = []
+    const id = props.id;
+    const Tipo = props.Tipo;
+    const Cantidad = props.Cantidad;
+    const setSelectedItem = props.setSelectedItem;
+    let detalles = [];
 
-    // Object.keys(props).map((key) => {
-    //     if (key !== "setSelectedItem" && key !== "Detalle"){
-    //         let prop = `<strong>${key}:</strong> ${props[key]}<br/>`;
-    //         text= {...text,prop}
-    //     }
-    // })
-    console.log(text)
+    Object.keys(props).map((key) => {
+        if (key !== "setSelectedItem" && key !== "Detalle" && key !=="id"){
+            let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
+            if (key === "Precio"){
+                info =<li key={key}><strong>{key}:</strong> ${props[key]}<br/></li>;
+            }
+            detalles.push(info);
+        }
+    })
+
+    console.log(detalles);
     console.log("Item: ", props);
     const url = `/item/${id}`;
     let image = [];
 
-    if (tipo == "Tecnologia") {
+    if (Tipo == "Tecnologia") {
        image = pcImage;
-    }else if (tipo == "Libros") {
+    }else if (Tipo == "Libros") {
         image = bookImage;
     }
 
@@ -38,11 +42,8 @@ const Item = (props) => {
         <Link to={url} onClick={()=>itemSelection(id)}><img src={image} className="card-img-top" alt="pcImage1"/></Link>
         <div className="card-body">
             <p className="card-text">
-                <strong>Tipo:</strong> {tipo}<br/> 
-                <strong>Marca: </strong>{props.Marca}<br/>
-                <strong>Nombre: </strong>{props.Nombre}<br/>
-                <strong>Año: </strong>{props.Anio}<br/>
-                <strong>Precio: </strong> ${props.Precio}</p>
+                {detalles.map(info => info)}
+            </p>
             <ItemCount stock={Cantidad} />
         </div>
     </div>

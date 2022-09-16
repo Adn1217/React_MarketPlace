@@ -54,17 +54,28 @@
         "id": 3,
         "Tipo": "Libros",
         "Nombre": "Doctor Sueño",
-        "Marca": "Pinguin",
+        "Editorial": "Pinguin",
         "Anio": 2018,
         "Precio": 55000,
         "Cantidad": 20,
         "Detalle": {
-            "Procesador": "NA",
-            "RAM": "NA",
-            "Disco": "NA",
-            "ROM": "NA",
-            "Video": "NA",
-            "VideoRef": "NA"
+            "Autor": "Stephen King.",
+            "Ranking": "5 estrellas.",
+            "Sinopsis": "Continuación de la famosa novela \"El Resplandor\"."
+        }
+    },
+    {
+        "id": 4,
+        "Tipo": "Libros",
+        "Nombre": "Más allá del orden",
+        "Editorial": "Books of America",
+        "Anio": 2021,
+        "Precio": 65000,
+        "Cantidad": 7,
+        "Detalle": {
+            "Autor": "Jordan Peterson",
+            "Ranking": "4 estrellas.",
+            "Sinopsis": "Tomo dos del análisis sicológico del reputado doctor en siquiatría."
         }
     }
 ]

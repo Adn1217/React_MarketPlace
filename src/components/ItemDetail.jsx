@@ -1,14 +1,20 @@
 import React, {useEffect, useState} from 'react';
 
-const ItemDetail = ({Procesador, RAM, Disco, ROM, Video, VideoRef}) => {
+const ItemDetail = (props) => {
 
-  console.log("Detalle: ",Procesador, RAM, Disco, ROM, Video, VideoRef)
+  console.log("Detalle: ", props)
 
   const [itemSelected, setItemSelected] = useState(false);
+  let detalles = [];
 
   useEffect(() => {
-    setItemSelected(Procesador == undefined)
-  }, [Procesador==undefined])
+    setItemSelected(props == undefined)
+  }, [props])
+
+  Object.keys(props).map((key) => {
+          let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
+          detalles.push(info);
+      })
 
   return (
     <div className="card ">
@@ -16,12 +22,8 @@ const ItemDetail = ({Procesador, RAM, Disco, ROM, Video, VideoRef}) => {
           (
           <div className="card-body">
               <p className="card-text">
-                  <strong>Procesador:</strong> {Procesador}<br/> 
-                  <strong>RAM: </strong>{RAM}<br/>
-                  <strong>Disco: </strong>{Disco}<br/>
-                  <strong>ROM: </strong>{ROM}<br/>
-                  <strong>Tarjeta de video: </strong> {Video}<br/>
-                  <strong>Referencia: </strong> {VideoRef}</p>
+                {detalles.map((item) => item)}
+              </p>
           </div>
           )
       }
