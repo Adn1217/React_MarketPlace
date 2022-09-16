@@ -98,7 +98,7 @@ li {
   display: flex;
   justify-content: center;
   margin: 1%;
-  max-width: 18rem;
+  max-width: 15rem;
   min-height: 12rem;
   min-width: 12rem;
   text-align: center;
@@ -108,16 +108,16 @@ li {
 }
 
 .card a {
-  height: 12rem;
+  height: 13rem;
   justify-content:center;
 }
 
 .card-body {
-  min-height: 12rem;
+  min-height: 13rem;
 }
 
 .card-text {
-  min-height: 9rem;
+  min-height: 8rem;
 }
 
 .card:hover {
@@ -127,7 +127,8 @@ li {
 .imgContainer {
   display: flex;
   flex-direction: row;
-  width: 54rem;
+  flex-wrap: wrap;
+  width: 72rem;
   max-width: 100%;
 }
 
