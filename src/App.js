@@ -18,7 +18,7 @@ function App() {
         <Header />
         <Routes >
           <Route exact path='/' element={<ItemListContainer setSelectedItem={setSelectedItem} />} />
-          <Route exact path='/category/:id' element={<ItemListContainer setSelectedItem={setSelectedItem} />} />
+          <Route exact path='/category/:categoryId' element={<ItemListContainer setSelectedItem={setSelectedItem} />} />
           <Route exact path='/item/:id' element={<ItemDetailContainer selectedItem={selectedItem} />} />
 
           {/* <ItemListContainer setSelectedItem={setSelectedItem}/>

@@ -5,11 +5,11 @@ import ItemList from './ItemList';
 
 const ItemListContainer = ({setSelectedItem}) => {
 
-  const {id} = useParams();
+  const {categoryId} = useParams();
   
   return (
     <div className="container imgContainer">
-        <ItemList setSelectedItem={setSelectedItem} type={id}/>
+        <ItemList setSelectedItem={setSelectedItem} type={categoryId}/>
     </div>
   );
 }
