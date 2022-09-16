@@ -90,6 +90,10 @@ button {
   width: 100%;
 }
 
+li {
+  list-style-type:none;
+}
+
 .card {
   display: flex;
   justify-content: center;
@@ -133,7 +137,7 @@ button {
   max-width: 100%;
 }
 
-.imgContainer #Spinner {
+.imgContainer #Spinner, .detailContainer #Spinner {
   display:block;
   margin: 50px auto;
   padding: 50px;

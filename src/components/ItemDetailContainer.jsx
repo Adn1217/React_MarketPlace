@@ -27,6 +27,7 @@ const ItemDetailContainer = ({selectedItem}) => {
                     detailSelected = productSelected.Detalle
                     setDetalle(detailSelected);
                     console.log(detailSelected)
+                    console.log(detailSelected.length)
                     mensaje = (detailSelected.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
                     return detailSelected;
                 }catch(error){
@@ -37,7 +38,7 @@ const ItemDetailContainer = ({selectedItem}) => {
                     console.log("Se realizó consulta de detalles de inventario.", mensaje) 
                     setBuscando(false);
                 }
-            },2000)
+            },1000)
         }
         doFetch(id);
         setBuscando(selection +1 ? true: false);
