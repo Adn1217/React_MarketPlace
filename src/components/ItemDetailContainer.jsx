@@ -27,7 +27,6 @@ const ItemDetailContainer = ({selectedItem}) => {
                     detailSelected = productSelected.Detalle
                     setDetalle(detailSelected);
                     console.log(detailSelected)
-                    console.log(detailSelected.length)
                     mensaje = (detailSelected.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
                     return detailSelected;
                 }catch(error){
