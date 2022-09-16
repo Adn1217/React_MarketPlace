@@ -1,6 +1,7 @@
 import logo from '../logo.svg';
 import React from 'react';
 import CartWidget from './CartWidget'
+import {Link} from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -8,7 +9,7 @@ const Header = () => {
             <header className="App-header">
                 <div className="App-header brand col-3">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <a className="nav-link" href="/"><h2>MarketPlace</h2></a>
+                    <Link to={'/'} className="nav-link" ><h2>MarketPlace</h2></Link>
                 </div>
                 <nav className="navbar navbar-dark navbar-expand-lg App-header-options col-8">
                     <div className="container-fluid">
@@ -18,20 +19,20 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Home</a>
+                                    <Link to={'/'} className="nav-link active" aria-current="page">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Cuenta</a>
+                                    <Link to={'#'} className="nav-link">Cuenta</Link>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Link to={'#'} className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Categorías
-                                    </a>
+                                    </Link>
                                     <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="/category/Libros">Libros</a></li>
-                                        <li><a className="dropdown-item" href="/category/Mascotas">Mascotas</a></li>
+                                        <li><Link to={'/category/Libros'} className="dropdown-item" >Libros</Link></li>
+                                        <li><Link to={'/category/Mascotas'} className="dropdown-item" href="/category/Mascotas">Mascotas</Link></li>
                                         <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="/category/Tecnologia">Tecnología</a></li>
+                                        <li><Link to={'/category/Tecnologia'} className="dropdown-item">Tecnología</Link></li>
                                     </ul>
                                 </li>
                                 {/* <li class="nav-item">

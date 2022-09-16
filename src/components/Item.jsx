@@ -2,6 +2,7 @@ import React from 'react';
 import pcImage from '../assets/images/pcImage.jpg';
 import bookImage from '../assets/images/bookImage.png';
 import ItemCount from './ItemCount';
+import {Link} from 'react-router-dom';
 
 const Item = (props) => {
     const id = props.id
@@ -34,7 +35,7 @@ const Item = (props) => {
 
   return (
     <div className="card">
-        <a href={url} onClick={()=>itemSelection(id)}><img src={image} className="card-img-top" alt="pcImage1"/></a >
+        <Link to={url} onClick={()=>itemSelection(id)}><img src={image} className="card-img-top" alt="pcImage1"/></Link>
         <div className="card-body">
             <p className="card-text">
                 <strong>Tipo:</strong> {tipo}<br/> 
