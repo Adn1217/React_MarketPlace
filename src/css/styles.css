@@ -59,6 +59,10 @@ button {
   background: none;
 }
 
+#Agregar {
+  margin: 5px;
+}
+
 .opacidad {
   opacity: 0.4;
 }
