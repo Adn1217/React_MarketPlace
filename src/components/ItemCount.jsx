@@ -74,9 +74,9 @@ const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
                 <button href="#" disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
             </div>
         </div>
-        {<div id="Agregar" onClick={onAdd} >
+        <div id="Agregar" onClick={onAdd} >
             <button className="btn btn-outline-primary" disabled={agregarOff}>Agregar</button>
-        </div>}
+        </div>
     </>
   );
 }
