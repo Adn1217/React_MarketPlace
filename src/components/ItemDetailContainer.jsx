@@ -20,14 +20,11 @@ const ItemDetailContainer = ({selectedItem}) => {
                 try{
                     let response = await fetch(detail);  
                     let data = await response.json();
-                    console.log(data);
-                    // let productSelected = data[id]
                     let productSelected = data.find((item) => item.id==id)
-                    console.log(productSelected);
                     detailSelected = productSelected.Detalle
-                    setDetalle(detailSelected);
-                    console.log(detailSelected)
-                    mensaje = (detailSelected.length>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                    detailSelected["Cantidad"] = productSelected.Cantidad;
+                    setDetalle(detailSelected)
+                    mensaje = (detailSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
                     return detailSelected;
                 }catch(error){
                     console.log("Ha ocurrido el siguiente error: ", error)

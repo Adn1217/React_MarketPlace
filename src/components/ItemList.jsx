@@ -13,15 +13,11 @@ const ItemListContainer = ({setSelectedItem, type}) => {
                 let mensaje;
                 try{
                     let response = await fetch(stockDataApi);  
-                    // let response = await fetch(`https://pokeapi.co/api/v2/pokemon/1`);
                     let data = await response.json();
                     let products = data.filter((item) => item.Tipo === type);
-                    console.log(products)
                     type !== undefined && (data = products);
                     products?.length > 0 && (data = products);
-                    console.log(products)
                     mensaje = (data.length>0) ? `Se han encontrado ${data.length} productos.`:"No hay datos";
-                    console.log("Productos: ",JSON.stringify(data))
                     setStock(data);
                     return data;
                 }catch(error){
