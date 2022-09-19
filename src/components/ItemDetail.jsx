@@ -5,6 +5,7 @@ const ItemDetail = (props) => {
 
   const [itemSelected, setItemSelected] = useState(false);
   const [agregarOff, setAgregarOff] = useState(false);
+  const [itemCountOff, setItemCountOff] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
   let Cantidad = props.Cantidad;
@@ -18,8 +19,8 @@ const ItemDetail = (props) => {
       setAgregarOff(!((Cantidad>0) && quantity>0))
   }, [quantity])
 
-  function Agregar(quantity){
-      setAgregarOff(quantity > 0 ? true : false)
+  function onAdd(){
+      setItemCountOff(true);
   }
 
   Object.keys(props).map((key) => {
@@ -35,8 +36,8 @@ const ItemDetail = (props) => {
               <p className="card-text">
                 {detalles.map((item) => item)}
               </p>
-            <ItemCount stock={Cantidad} setQuantity={setQuantity} />
-            <div id="Agregar" onClick={Agregar} >
+            {!itemCountOff && <ItemCount stock={Cantidad} setQuantity={setQuantity} />}
+            <div id="Agregar" onClick={onAdd} >
                 <button className="btn btn-outline-primary" disabled={agregarOff}>Agregar</button>
             </div>
           </div>
