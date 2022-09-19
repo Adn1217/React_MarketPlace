@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import ItemCount from './ItemCount';
+import {Link} from 'react-router-dom';
 
 const ItemDetail = (props) => {
 
   const [itemSelected, setItemSelected] = useState(false);
-  const [agregarOff, setAgregarOff] = useState(false);
   const [itemCountOff, setItemCountOff] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
@@ -15,12 +15,8 @@ const ItemDetail = (props) => {
     setItemSelected(props == undefined)
   }, [props])
   
-  useEffect(() =>{
-      setAgregarOff(!((Cantidad>0) && quantity>0))
-  }, [quantity])
+  function endPurchase(){
 
-  function onAdd(){
-      setItemCountOff(true);
   }
 
   Object.keys(props).map((key) => {
@@ -36,10 +32,12 @@ const ItemDetail = (props) => {
               <p className="card-text">
                 {detalles.map((item) => item)}
               </p>
-            {!itemCountOff && <ItemCount stock={Cantidad} setQuantity={setQuantity} />}
-            <div id="Agregar" onClick={onAdd} >
-                <button className="btn btn-outline-primary" disabled={agregarOff}>Agregar</button>
-            </div>
+            {!itemCountOff ? (
+              <ItemCount stock={Cantidad} quantity={quantity} setQuantity={setQuantity} itemCountOff= {itemCountOff} setItemCountOff={setItemCountOff} /> ): (
+                <div id="Agregar" onClick={endPurchase} >
+                  <Link to={'/cart'} ><button className="btn btn-outline-primary" >Finalizar</button></Link>
+                </div>)
+            }
           </div>
           )
       }
