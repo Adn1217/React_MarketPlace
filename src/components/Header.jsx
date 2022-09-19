@@ -35,9 +35,6 @@ const Header = () => {
                                         <li><Link to={'/category/Tecnologia'} className="dropdown-item">Tecnología</Link></li>
                                     </ul>
                                 </li>
-                                {/* <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
-                                </li> */}
                             </ul>
                             <form className="d-flex" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Ingrese búsqueda" aria-label="Buscar" />

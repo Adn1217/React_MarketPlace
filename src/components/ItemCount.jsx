@@ -3,7 +3,7 @@ import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
 
 const ItemCount = ({stock, setQuantity}) => {
-    
+
     const [seleccionados, setSeleccionados] = useState(0);
     const [SumarOff, setSumarOff] = useState(true);
     const [RestarOff, setRestarOff] = useState(true);
@@ -63,7 +63,6 @@ const ItemCount = ({stock, setQuantity}) => {
         <div id="Sumar" className={claseSuma} onClick={Sumar}>
             <button href="#" disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
         </div>
-        {/* <a class="navbar-brand" href="#">Navbar</a> */}
     </div>
   );
 }
