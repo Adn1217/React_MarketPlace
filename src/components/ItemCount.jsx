@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock, setQuantity}) => {
+    
     const [seleccionados, setSeleccionados] = useState(0);
     const [SumarOff, setSumarOff] = useState(true);
     const [RestarOff, setRestarOff] = useState(true);
@@ -26,11 +27,11 @@ const ItemCount = ({stock}) => {
         setClaseResta("col-md-3" + (flag ? " opacidad" : ""));
     }
     
-
     function CambiarSeleccionados (num) {
+        console.log(seleccionados + num);
         setSeleccionados(seleccionados + num);
+        setQuantity(seleccionados + num);
     }
-    // document.getElemenById("NumeroAComprar").value = seleccionados;
 
     function Sumar () {
         if(Cantidad > 0 && seleccionados < Cantidad){
