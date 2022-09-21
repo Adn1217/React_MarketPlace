@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
+import {CartContext} from './CartContext';
 
 const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
 
@@ -10,7 +11,9 @@ const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
     const [agregarOff, setAgregarOff] = useState(false);
     const [claseResta, setClaseResta] = useState("col-md-3")
     const [claseSuma, setClaseSuma] = useState("col-md-3")
-    
+
+    const {addItem} = useContext(CartContext);
+
     let Cantidad = stock;
 
     useEffect (() => {
@@ -59,6 +62,7 @@ const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
 
   function onAdd(){
       setItemCountOff(true);
+      addItem(seleccionados);
   }
 
   return (
