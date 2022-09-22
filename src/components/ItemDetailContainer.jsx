@@ -21,8 +21,9 @@ const ItemDetailContainer = ({selectedItem}) => {
                     let response = await fetch(detail);  
                     let data = await response.json();
                     let productSelected = data.find((item) => item.id==id)
-                    detailSelected = productSelected.Detalle
-                    detailSelected["Cantidad"] = productSelected.Cantidad;
+                    // detailSelected = productSelected.Detalle
+                    detailSelected = productSelected
+                    // detailSelected["Cantidad"] = productSelected.Cantidad;
                     setDetalle(detailSelected)
                     mensaje = (detailSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
                     return detailSelected;
