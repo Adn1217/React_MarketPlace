@@ -3,7 +3,7 @@ import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
 import {CartContext} from './CartContext';
 
-const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
+const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
 
     const [seleccionados, setSeleccionados] = useState(0);
     const [SumarOff, setSumarOff] = useState(true);
@@ -14,7 +14,7 @@ const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
 
     const {addItem} = useContext(CartContext);
 
-    let Cantidad = stock;
+    let Cantidad = item.Cantidad;
 
     useEffect (() => {
         setearSumarOff(!(Cantidad !== undefined && Cantidad>0));
@@ -62,7 +62,7 @@ const ItemCount = ({stock, quantity, setQuantity, setItemCountOff}) => {
 
   function onAdd(){
       setItemCountOff(true);
-      addItem(seleccionados);
+      addItem(item, seleccionados);
   }
 
   return (

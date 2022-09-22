@@ -8,21 +8,17 @@ const ItemDetail = (props) => {
   const [itemCountOff, setItemCountOff] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
-  let Cantidad = props.Cantidad;
+  // let Cantidad = props.Cantidad;
   let detalles = [];
 
   useEffect(() => {
-    setItemSelected(props == undefined)
+    setItemSelected(props == undefined);
   }, [props])
   
-  function endPurchase(){
-
-  }
-
-  Object.keys(props).map((key) => {
-          let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
-          detalles.push(info);
-      })
+  Object.keys(props.Detalle ?? []).map((key) => {
+        let info =<li key={key}><strong>{key}:</strong> {props.Detalle[key]}<br/></li>;
+        detalles.push(info);
+  })
 
   return (
     <div className="card ">
@@ -33,8 +29,8 @@ const ItemDetail = (props) => {
                 {detalles.map((item) => item)}
               </p>
             {!itemCountOff ? (
-              <ItemCount stock={Cantidad} quantity={quantity} setQuantity={setQuantity} itemCountOff= {itemCountOff} setItemCountOff={setItemCountOff} /> ): (
-                <div id="Agregar" onClick={endPurchase} >
+              <ItemCount item={props} quantity={quantity} setQuantity={setQuantity} itemCountOff= {itemCountOff} setItemCountOff={setItemCountOff} /> ): (
+                <div id="Agregar" >
                   <Link to={'/cart'} ><button className="btn btn-outline-primary" >Finalizar</button></Link>
                 </div>)
             }
