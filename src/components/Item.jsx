@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import pcImage from '../assets/images/pcImage.jpg';
 import bookImage from '../assets/images/bookImage.png';
 import {Link} from 'react-router-dom';
+import { CartContext } from './CartContext';
 
 const Item = (props) => {
     const id = props.id;
     const Tipo = props.Tipo;
-    const setSelectedItem = props.setSelectedItem;
     let detalles = [];
+
+    const { setSelectedItemId} = useContext(CartContext);
 
     Object.keys(props).map((key) => {
         if (key !== "setSelectedItem" && key !== "Detalle" && key !=="id"){
@@ -29,8 +31,8 @@ const Item = (props) => {
     }
 
     function itemSelection(id){
-        setSelectedItem(id);
-        console.log("Se ha seleccionado el producto ", id);
+        setSelectedItemId(id);
+        // console.log("Se ha seleccionado el producto ", id);
     }
 
   return (

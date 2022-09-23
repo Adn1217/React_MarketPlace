@@ -1,32 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
+import {CartContext} from './CartContext';
 
 let detail = '../stock.json';
 
-const ItemDetailContainer = ({selectedItem}) => {
+const ItemDetailContainer = () => {
 
-    const [detalle, setDetalle] = useState([]);
+    const [selectedItem, setSelectedItem] = useState([]);
     const [buscando, setBuscando] = useState();
     const {id} = useParams();
+    const {selectedItemId} = useContext(CartContext);
 
-    let selection = selectedItem;
-
+    let selection = selectedItemId;
+    
     useEffect( () => {
         async function doFetch(id){
             setTimeout( async () => {
                 let mensaje;
-                let detailSelected;
                 try{
                     let response = await fetch(detail);  
                     let data = await response.json();
                     let productSelected = data.find((item) => item.id==id)
-                    // detailSelected = productSelected.Detalle
-                    detailSelected = productSelected
-                    // detailSelected["Cantidad"] = productSelected.Cantidad;
-                    setDetalle(detailSelected)
-                    mensaje = (detailSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
-                    return detailSelected;
+                    setSelectedItem(productSelected);
+                    mensaje = (productSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                    return productSelected;
                 }catch(error){
                     console.log("Ha ocurrido el siguiente error: ", error)
                     return error;
@@ -39,14 +37,14 @@ const ItemDetailContainer = ({selectedItem}) => {
         }
         doFetch(id);
         setBuscando(selection +1 ? true: false);
-    },[selectedItem]);
+    },[selectedItemId]);
 
     return (
         <div className="container detailContainer">
             {(buscando) ? (
             <div id="Spinner" className="spinner-border text-primary" role="status">
             </div> ):
-            <ItemDetail {...detalle} />}
+            <ItemDetail {...selectedItem} />}
         </div>
     );
 }
