@@ -8,7 +8,6 @@ const ItemDetail = (props) => {
   const [itemCountOff, setItemCountOff] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
-  // let Cantidad = props.Cantidad;
   let detalles = [];
 
   useEffect(() => {

@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 export const CartContext = React.createContext();
 
 const CartProvider = ({defaultValue = [], children}) =>{
 
     const [cartItems, setCartItems] = useState(defaultValue);
+    const [selectedItemId, setSelectedItemId] = useState(defaultValue);
+
+    useEffect (() => {
+        console.log("Items en carrito: ", cartItems)
+    }, [cartItems])
 
     function getFromCart (id) {
         return cartItems.find(item => item.id === id)
@@ -15,7 +20,6 @@ const CartProvider = ({defaultValue = [], children}) =>{
         return itemInCart 
     }
 
-    console.log("Items en carrito: ", cartItems)
     const addItem = (newItem, seleccionados) =>{
 
         if (cartItems.length == 0) {
@@ -53,7 +57,7 @@ const CartProvider = ({defaultValue = [], children}) =>{
     }
     
 
-    return <CartContext.Provider value = {{cartItems, getFromCart, addItem, removeItem, clear, isInCart}}>
+    return <CartContext.Provider value = {{selectedItemId, setSelectedItemId, cartItems, getFromCart, addItem, removeItem, clear, isInCart}}>
         {children}
     </CartContext.Provider>
 }
