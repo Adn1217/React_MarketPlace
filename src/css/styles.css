@@ -94,6 +94,13 @@ button {
   width: 100%;
 }
 
+ol.card {
+  padding-inline-start: 0px;
+  margin: 5px;
+  padding: 5px;
+  display: inline-block;
+}
+
 li {
   list-style-type:none;
 }
