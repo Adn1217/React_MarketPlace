@@ -23,7 +23,7 @@ const Cart = () => {
     <div  >
         <h1>Su compra ha finalizado</h1>
         <h2>A continuación se encuentra la lista de su compra: </h2>
-        <ol>
+        <ol className = "card">
             <hr/>
             {listaCompra}
             <hr/>         
