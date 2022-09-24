@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
   })
 
   return (
-    <div className="card ">
+    <div className="card centered">
       {(itemSelected) ? "" : 
           (
           <div className="card-body">

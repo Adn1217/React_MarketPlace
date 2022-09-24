@@ -94,17 +94,6 @@ button {
   width: 100%;
 }
 
-ol.card {
-  padding-inline-start: 0px;
-  margin: 5px;
-  padding: 5px;
-  display: inline-block;
-}
-
-li {
-  list-style-type:none;
-}
-
 .card {
   display: flex;
   justify-content: center;
@@ -133,6 +122,39 @@ li {
 
 .card:hover {
   transform: scale(1.1);
+}
+
+.centered {
+  display: inline-block;
+}
+
+ol.card {
+  padding-inline-start: 0px;
+  margin: 5px;
+  padding: 5px;
+  display: inline-block;
+  max-width: 25rem;
+  width: 75%;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.animate__animated.animate__headShake {
+  --animate-duration: 1s;
+}
+
+#itemInCart div {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#eliminar:hover {
+  transform: scale(1.1);
+}
+
+li {
+  list-style-type:none;
 }
 
 .imgContainer {

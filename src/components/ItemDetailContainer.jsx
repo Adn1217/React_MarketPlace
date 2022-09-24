@@ -40,11 +40,13 @@ const ItemDetailContainer = () => {
     },[selectedItemId]);
 
     return (
-        <div className="container detailContainer">
+        <div className="container detailContainer animate__animated animate__headShakertBeat ">
             {(buscando) ? (
             <div id="Spinner" className="spinner-border text-primary" role="status">
             </div> ):
-            <ItemDetail {...selectedItem} />}
+            <div className="animate__animated animate__headShake">
+                <ItemDetail {...selectedItem} />
+            </div>}
         </div>
     );
 }
