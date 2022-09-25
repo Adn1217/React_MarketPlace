@@ -43,10 +43,11 @@ const CartProvider = ({defaultValue = [], children}) =>{
     }
 
     function removeItem (id) {
-        let item = cartItems.filter(item => item.id === id)
-        if (item !== []){
-            console.log("Se eliminó", item.id)
-            setCartItems(cartItems.splice(item,1))
+        let index = cartItems.findIndex(item => item.id === id)
+        if (index >= 0){
+            console.log("Se eliminó el item: ", cartItems[index])
+            cartItems.splice(index,1)
+            setCartItems(cartItems)
         }else {
             console.log("El item no se encontraba en el carrito");
         }

@@ -137,19 +137,20 @@ ol.card {
   width: 75%;
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .animate__animated.animate__headShake {
   --animate-duration: 1s;
 }
 
-#itemInCart div {
+.itemInCart div {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
 }
 
-#eliminar:hover {
+.eliminar:hover {
   transform: scale(1.1);
 }
 

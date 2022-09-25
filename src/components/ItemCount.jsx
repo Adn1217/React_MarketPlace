@@ -69,13 +69,13 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     <>
         <div className="Item-Quantity">
             <div id="Restar" className={claseResta} onClick={Restar} >
-                <button href="#" disabled={RestarOff}><img src={substractLogo} className="Substract-logo" alt="logo"/></button>
+                <button disabled={RestarOff}><img src={substractLogo} className="Substract-logo" alt="logo"/></button>
             </div>
             <div className="col-md-6">
                 <input  id="NumeroAComprar" type="text" className="form-control Item-Number" placeholder="Stock" aria-label="Stock" value = {seleccionados} disabled/>
             </div>
             <div id="Sumar" className={claseSuma} onClick={Sumar}>
-                <button href="#" disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
+                <button disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
             </div>
         </div>
         <div id="Agregar" onClick={onAdd} >
