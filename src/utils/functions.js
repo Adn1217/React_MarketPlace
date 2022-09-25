@@ -40,3 +40,13 @@ export function toastMsgPopUp(msg, title, type, time) {
           }
       })
 }
+
+export function formatoMoneda(currency) {
+    let currencyFormato = {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 0
+    };     
+    let moneda = new Intl.NumberFormat('es-ES', currencyFormato);
+    return moneda
+}
