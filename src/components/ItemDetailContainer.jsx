@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {CartContext} from './CartContext';
+import {toastMsgPopUp} from '../utils/functions.js'
 
 let detail = '../stock.json';
 
@@ -16,6 +17,7 @@ const ItemDetailContainer = () => {
     
     useEffect( () => {
         async function doFetch(id){
+            toastMsgPopUp('',"Cargando información.",'info',1000);
             setTimeout( async () => {
                 let mensaje;
                 try{

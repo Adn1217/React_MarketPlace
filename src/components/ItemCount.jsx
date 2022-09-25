@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
 import {CartContext} from './CartContext';
+import {toastMsgPopUp} from '../utils/functions.js'
 
 const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
 
@@ -61,6 +62,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     }
 
   function onAdd(){
+      toastMsgPopUp('',"Se ha agregado el producto.",'info',1000);
       setItemCountOff(true);
       addItem(item, seleccionados);
   }

@@ -1,8 +1,9 @@
 
 import React, {useState, useContext} from 'react';
 import {CartContext} from './CartContext';
-import deleteLogo from '../assets/images/delete.png'
-import deleteLogoAll from '../assets/images/deleteAll.png'
+import deleteLogo from '../assets/images/delete.png';
+import deleteLogoAll from '../assets/images/deleteAll.png';
+import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp} from '../utils/functions.js'
 
 const Cart = () => {
   const {cartItems, removeItem, clear} = useContext(CartContext);
@@ -12,14 +13,19 @@ const Cart = () => {
   let total = 0;
 
   function defRemoveItem (id) {
+    toastMsgPopUp('',"Se ha eliminado el producto.",'info',1000);
     removeItem(id);
     setDefItems([...cartItems]);
   }
 
-  function defRemoveList () {
-    clear();
-    setDefItems([]);
-    console.log("Se ha vaciado el carrito")
+  async function defRemoveList () {
+    let confirmationProm = await ConfMsgPopUp('¿Desea vaciar toda la lista de compra?','');
+    if (confirmationProm.isConfirmed){
+      clear();
+      setDefItems([]);
+      MsgPopUp('Se ha vaciado el carrito','','info');
+      console.log("Se ha vaciado el carrito");
+    }
   }
 
   if (defItems.length == 0) {

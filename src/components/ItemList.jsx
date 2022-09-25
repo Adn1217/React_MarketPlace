@@ -1,6 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import Item from './Item';
+import {toastMsgPopUp} from '../utils/functions.js'
 
 const ItemListContainer = ({setSelectedItem, type}) => {
 
@@ -9,6 +10,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
 
     useEffect( () => {
         async function doFetch(stockDataApi){
+            toastMsgPopUp('',"Cargando información.",'info',2000);
             setTimeout( async () => {
                 let mensaje;
                 try{
