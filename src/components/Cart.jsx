@@ -3,6 +3,7 @@ import React, {useState, useContext} from 'react';
 import {CartContext} from './CartContext';
 import deleteLogo from '../assets/images/delete.png';
 import deleteLogoAll from '../assets/images/deleteAll.png';
+import {Link} from 'react-router-dom';
 import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp} from '../utils/functions.js'
 
 const Cart = () => {
@@ -29,7 +30,8 @@ const Cart = () => {
   }
 
   if (defItems.length == 0) {
-    listaCompra = "No hay productos en su carrito";
+    // listaCompra = <>No hay productos en su carrito</>;
+    listaCompra = <>No hay productos en su carrito <Link to={'/'} className="nav-link" >Volver al inicio...</Link></>;
   }else{
     listaCompra = [];
     defItems.map((item) => {
