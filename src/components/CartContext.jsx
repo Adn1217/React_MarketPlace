@@ -47,7 +47,7 @@ const CartProvider = ({defaultValue = [], children}) =>{
         if (index >= 0){
             console.log("Se eliminó el item: ", cartItems[index])
             cartItems.splice(index,1)
-            setCartItems(cartItems)
+            setCartItems([...cartItems])
         }else {
             console.log("El item no se encontraba en el carrito");
         }

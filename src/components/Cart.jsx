@@ -30,7 +30,6 @@ const Cart = () => {
   }
 
   if (defItems.length == 0) {
-    // listaCompra = <>No hay productos en su carrito</>;
     listaCompra = <>No hay productos en su carrito <Link to={'/'} className="nav-link" >Volver al inicio...</Link></>;
   }else{
     listaCompra = [];

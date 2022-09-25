@@ -36,7 +36,12 @@
   border: solid;
   border-width: 2px;
   border-color: #282c34;
+  display: inline-block;
   /* justify-content: right; */
+}
+
+#cartItemsNum {
+  padding-left: 5px;
 }
 
 .App-header-Chart:hover {
