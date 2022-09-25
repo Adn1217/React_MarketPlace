@@ -2,19 +2,24 @@
 import React, {useState, useContext} from 'react';
 import {CartContext} from './CartContext';
 import deleteLogo from '../assets/images/delete.png'
+import deleteLogoAll from '../assets/images/deleteAll.png'
 
 const Cart = () => {
-  const {cartItems, removeItem} = useContext(CartContext);
+  const {cartItems, removeItem, clear} = useContext(CartContext);
   const [defItems, setDefItems] = useState([...cartItems]);
 
   let listaCompra = [];
   let total = 0;
 
-  console.log(defItems);
-
   function defRemoveItem (id) {
     removeItem(id);
     setDefItems([...cartItems]);
+  }
+
+  function defRemoveList () {
+    clear();
+    setDefItems([]);
+    console.log("Se ha vaciado el carrito")
   }
 
   if (defItems.length == 0) {
@@ -32,7 +37,7 @@ const Cart = () => {
               </p>
             </div> 
             <div className="eliminar col-2" id={"eliminarItem"+item.id} onClick={() =>defRemoveItem(item.id)} >
-                <button ><img src={deleteLogo} className="Substract-logo" alt="deleteLogo"/></button>
+                <button ><img src={deleteLogo} className="Delete-logo" alt="deleteItemLogo"/></button>
             </div>
         </div>
       listaCompra.push(info)
@@ -42,7 +47,7 @@ const Cart = () => {
 
   
   return (
-    <div >
+    <div >  
         <h1>Su compra ha finalizado</h1>
         <h2>A continuación se encuentra la lista de su compra: </h2>
         <ol className = "card">
@@ -50,7 +55,13 @@ const Cart = () => {
             {listaCompra}
             <hr/>         
         </ol>
-        <h3>Total a pagar: ${total}</h3>
+        <div id="Total">
+          <h3>Total a pagar: ${total}</h3>
+          {(defItems.length > 0) && (
+          <div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
+              <button ><img src={deleteLogoAll} className="Delete-logo" alt="deleteAllLogo"/></button>
+          </div>)}
+        </div>
     </div>
   );
 }
