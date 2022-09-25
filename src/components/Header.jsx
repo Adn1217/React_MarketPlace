@@ -11,7 +11,7 @@ const Header = () => {
                     <img src={logo} className="App-logo" alt="logo" />
                     <Link to={'/'} className="nav-link" ><h2>MarketPlace</h2></Link>
                 </div>
-                <nav className="navbar navbar-dark navbar-expand-lg App-header-options col-8">
+                <nav className="navbar navbar-dark navbar-expand-lg App-header-options col-7">
                     <div className="container-fluid">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

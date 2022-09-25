@@ -36,7 +36,16 @@
   border: solid;
   border-width: 2px;
   border-color: #282c34;
+  display: inline-block;
   /* justify-content: right; */
+}
+
+.App-header-Chart > div {
+  display: inline-block;
+}
+
+#cartItemsNum {
+  padding-left: 10px;
 }
 
 .App-header-Chart:hover {
@@ -67,7 +76,7 @@ button {
   opacity: 0.4;
 }
 
-.Sum-logo, .Substract-logo {
+.Sum-logo, .Substract-logo, .Delete-logo {
   /* height: 40vmin; */
   /* height: 30%;
   width: 30%; */
@@ -92,17 +101,6 @@ button {
 
 .empty {
   width: 100%;
-}
-
-ol.card {
-  padding-inline-start: 0px;
-  margin: 5px;
-  padding: 5px;
-  display: inline-block;
-}
-
-li {
-  list-style-type:none;
 }
 
 .card {
@@ -133,6 +131,56 @@ li {
 
 .card:hover {
   transform: scale(1.1);
+}
+
+.centered {
+  display: inline-block;
+}
+
+ol.card {
+  padding-inline-start: 0px;
+  margin: 5px;
+  padding: 5px;
+  display: inline-block;
+  max-width: 25rem;
+  width: 75%;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+ol.card a {
+  height: 5rem;
+}
+
+.animate__animated.animate__headShake {
+  --animate-duration: 1s;
+}
+
+.itemInCart div {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.eliminar:hover, .eliminarTodo:hover {
+  transform: scale(1.1);
+}
+
+li {
+  list-style-type:none;
+}
+
+#Total > h3, #Total > div {
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#Total > div {
+  padding-bottom: 15px;
+  padding-top: 5px;
 }
 
 .imgContainer {

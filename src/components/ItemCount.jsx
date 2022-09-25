@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import sumLogo from '../assets/images/plus.png'
 import substractLogo from '../assets/images/minus.png'
 import {CartContext} from './CartContext';
+import {toastMsgPopUp} from '../utils/functions.js'
 
 const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
 
@@ -61,6 +62,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     }
 
   function onAdd(){
+      toastMsgPopUp('',"Se ha agregado el producto.",'info',1000);
       setItemCountOff(true);
       addItem(item, seleccionados);
   }
@@ -69,13 +71,13 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     <>
         <div className="Item-Quantity">
             <div id="Restar" className={claseResta} onClick={Restar} >
-                <button href="#" disabled={RestarOff}><img src={substractLogo} className="Substract-logo" alt="logo"/></button>
+                <button disabled={RestarOff}><img src={substractLogo} className="Substract-logo" alt="logo"/></button>
             </div>
             <div className="col-md-6">
                 <input  id="NumeroAComprar" type="text" className="form-control Item-Number" placeholder="Stock" aria-label="Stock" value = {seleccionados} disabled/>
             </div>
             <div id="Sumar" className={claseSuma} onClick={Sumar}>
-                <button href="#" disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
+                <button disabled={SumarOff}><img src={sumLogo} className="Sum-logo" alt="logo"/></button>
             </div>
         </div>
         <div id="Agregar" onClick={onAdd} >

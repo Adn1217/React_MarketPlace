@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {CartContext} from './CartContext';
+import {toastMsgPopUp} from '../utils/functions.js'
 
 let detail = '../stock.json';
 
@@ -16,6 +17,7 @@ const ItemDetailContainer = () => {
     
     useEffect( () => {
         async function doFetch(id){
+            toastMsgPopUp('',"Cargando información.",'info',1000);
             setTimeout( async () => {
                 let mensaje;
                 try{
@@ -40,11 +42,13 @@ const ItemDetailContainer = () => {
     },[selectedItemId]);
 
     return (
-        <div className="container detailContainer">
+        <div className="container detailContainer animate__animated animate__headShakertBeat ">
             {(buscando) ? (
             <div id="Spinner" className="spinner-border text-primary" role="status">
             </div> ):
-            <ItemDetail {...selectedItem} />}
+            <div className="animate__animated animate__headShake">
+                <ItemDetail {...selectedItem} />
+            </div>}
         </div>
     );
 }

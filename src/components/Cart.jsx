@@ -1,26 +1,62 @@
 
-import React, {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {CartContext} from './CartContext';
-
+import deleteLogo from '../assets/images/delete.png';
+import deleteLogoAll from '../assets/images/deleteAll.png';
+import {Link} from 'react-router-dom';
+import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp} from '../utils/functions.js'
 
 const Cart = () => {
-  const {cartItems} = useContext(CartContext);
-  const listaCompra = [];
+  const {cartItems, removeItem, clear} = useContext(CartContext);
+  let defItems = [...cartItems];
+
+  let listaCompra = [];
   let total = 0;
 
-  cartItems.map((item) => {
-    let info = <p key={item.Nombre+"item"}>
-      <li key={item.Nombre}><strong>Nombre:</strong> {item.Nombre}<br/></li>
-      <li key={item.Nombre+item.Precio}><strong>Precio:</strong> {item.Precio}<br/></li>
-      <li key={item.Nombre+item.seleccionados}><strong>Cantidad:</strong> {item.seleccionados}<br/></li>
-      <li key={item.Nombre+"Total"}><strong>Total:</strong> ${item.seleccionados*item.Precio}<br/></li>
-      </p>
-    listaCompra.push(info)
-    total = total + item.seleccionados*item.Precio;
-  })
+  useEffect(() => {
+    defItems = [...cartItems];
+  }, [cartItems])
+
+  function defRemoveItem (id) {
+    toastMsgPopUp('',"Se ha eliminado el producto.",'info',1000);
+    removeItem(id);
+  }
+
+  async function defRemoveList () {
+    let confirmationProm = await ConfMsgPopUp('¿Desea vaciar toda la lista de compra?','');
+    if (confirmationProm.isConfirmed){
+      clear();
+      MsgPopUp('Se ha vaciado el carrito','','info');
+      console.log("Se ha vaciado el carrito");
+    }
+  }
+
+  if (defItems.length == 0) {
+    listaCompra = <>No hay productos en su carrito <Link to={'/'} className="nav-link" >Volver al inicio...</Link></>;
+  }else{
+    listaCompra = [];
+    defItems.map((item) => {
+      let info = <div id={"itemInCart"+item.id} className="itemInCart col-lg" key={item.Nombre+"item"}>
+            <div className="col-10">
+              <p>
+              <li key={item.Nombre}><strong>Nombre:</strong> {item.Nombre}<br/></li>
+              <li key={item.Nombre+item.Precio}><strong>Precio:</strong> {item.Precio}<br/></li>
+              <li key={item.Nombre+item.seleccionados}><strong>Cantidad:</strong> {item.seleccionados}<br/></li>
+              <li key={item.Nombre+"Total"}><strong>Total:</strong> ${item.seleccionados*item.Precio}<br/></li>
+              </p>
+            </div> 
+            <div className="eliminar col-2" id={"eliminarItem"+item.id} onClick={() =>defRemoveItem(item.id)} >
+                <button ><img src={deleteLogo} className="Delete-logo" alt="deleteItemLogo"/></button>
+            </div>
+        </div>
+      listaCompra.push(info)
+      total = total + item.seleccionados*item.Precio;
+    })
+  }
+
   
   return (
-    <div  >
+    <div >  
         <h1>Su compra ha finalizado</h1>
         <h2>A continuación se encuentra la lista de su compra: </h2>
         <ol className = "card">
@@ -28,8 +64,13 @@ const Cart = () => {
             {listaCompra}
             <hr/>         
         </ol>
-        <h3>Total a pagar: ${total}</h3>
-
+        <div id="Total">
+          <h3>Total a pagar: ${total}</h3>
+          {(defItems.length > 0) && (
+          <div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
+              <button ><img src={deleteLogoAll} className="Delete-logo" alt="deleteAllLogo"/></button>
+          </div>)}
+        </div>
     </div>
   );
 }
