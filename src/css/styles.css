@@ -40,8 +40,12 @@
   /* justify-content: right; */
 }
 
+.App-header-Chart > div {
+  display: inline-block;
+}
+
 #cartItemsNum {
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .App-header-Chart:hover {

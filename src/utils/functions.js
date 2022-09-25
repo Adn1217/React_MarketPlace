@@ -7,7 +7,8 @@ export function ConfMsgPopUp(msg, title, confMsg) {
         text: msg || "Se sobreescribirá la información",
         icon: 'warning',
         showCancelButton: true,
-        // confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#61dafb',
+        focusCancel: true, 
         // cancelButtonColor: '#d33',
         confirmButtonText: confMsg || 'Aceptar'
       })
@@ -27,7 +28,7 @@ export function toastMsgPopUp(msg, title, type, time) {
         // color: 'white',
         icon: type || 'error',
         // iconColor: 'white',
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
         title: title || 'Ha ocurrido un error',
         text: msg ||'',

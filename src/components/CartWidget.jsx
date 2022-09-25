@@ -11,14 +11,18 @@ const CartWidget = () => {
 
 
   useEffect(() => {
+    setCartItemsNum(0);
     setCartItemsNum(cartItems.length);
   }, [cartItems])
 
+  function cartItemsNumber(number){
+    return <div key={"cartItemsNum"+number} className="animate__animated animate__bounce"><span id="cartItemsNum" >{number}</span></div>
+  }
 
   return (
     <div className="App-header-Chart">
         <Link to={'/Cart'} ><img src={shoppingCart} className="ShoppingChart-logo" alt="logo"/></Link>
-        {cartItemsNum > 0 ? <span id="cartItemsNum">{cartItemsNum}</span>:""}
+        {cartItemsNum > 0 ? cartItemsNumber(cartItemsNum):""}
     </div>
   );
 }
