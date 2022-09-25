@@ -3,11 +3,13 @@ import pcImage from '../assets/images/pcImage.jpg';
 import bookImage from '../assets/images/bookImage.png';
 import {Link} from 'react-router-dom';
 import { CartContext } from './CartContext';
+import {formatoMoneda} from '../utils/functions.js';
 
 const Item = (props) => {
     const id = props.id;
     const Tipo = props.Tipo;
     let detalles = [];
+    let moneda = formatoMoneda('COP');
 
     const { setSelectedItemId} = useContext(CartContext);
 
@@ -15,7 +17,7 @@ const Item = (props) => {
         if (key !== "setSelectedItem" && key !== "Detalle" && key !=="id"){
             let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
             if (key === "Precio"){
-                info =<li key={key}><strong>{key}:</strong> ${props[key]}<br/></li>;
+                info =<li key={key}><strong>{key}:</strong> ${moneda.format(props[key])}<br/></li>;
             }
             detalles.push(info);
         }

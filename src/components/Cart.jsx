@@ -4,14 +4,16 @@ import {CartContext} from './CartContext';
 import deleteLogo from '../assets/images/delete.png';
 import deleteLogoAll from '../assets/images/deleteAll.png';
 import {Link} from 'react-router-dom';
-import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp} from '../utils/functions.js'
+import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp, formatoMoneda} from '../utils/functions.js';
 
 const Cart = () => {
   const {cartItems, removeItem, clear} = useContext(CartContext);
   let defItems = [...cartItems];
+  let moneda = formatoMoneda('COP');
 
   let listaCompra = [];
   let total = 0;
+  let totalMoneda = moneda.format(total);
 
   useEffect(() => {
     defItems = [...cartItems];
@@ -40,9 +42,9 @@ const Cart = () => {
             <div className="col-10">
               <p>
               <li key={item.Nombre}><strong>Nombre:</strong> {item.Nombre}<br/></li>
-              <li key={item.Nombre+item.Precio}><strong>Precio:</strong> {item.Precio}<br/></li>
+              <li key={item.Nombre+item.Precio}><strong>Precio:</strong> ${moneda.format(item.Precio)}<br/></li>
               <li key={item.Nombre+item.seleccionados}><strong>Cantidad:</strong> {item.seleccionados}<br/></li>
-              <li key={item.Nombre+"Total"}><strong>Total:</strong> ${item.seleccionados*item.Precio}<br/></li>
+              <li key={item.Nombre+"Total"}><strong>Total:</strong> ${moneda.format(item.seleccionados*item.Precio)}<br/></li>
               </p>
             </div> 
             <div className="eliminar col-2" id={"eliminarItem"+item.id} onClick={() =>defRemoveItem(item.id)} >
@@ -51,6 +53,7 @@ const Cart = () => {
         </div>
       listaCompra.push(info)
       total = total + item.seleccionados*item.Precio;
+      totalMoneda = moneda.format(total);
     })
   }
 
@@ -65,7 +68,7 @@ const Cart = () => {
             <hr/>         
         </ol>
         <div id="Total">
-          <h3>Total a pagar: ${total}</h3>
+          <h3>Total a pagar: ${totalMoneda}</h3>
           {(defItems.length > 0) && (
           <div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
               <button ><img src={deleteLogoAll} className="Delete-logo" alt="deleteAllLogo"/></button>
