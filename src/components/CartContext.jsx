@@ -32,6 +32,7 @@ const CartProvider = ({defaultValue = [], children}) =>{
             itemInCart ?? console.log("No se encuentra en el carrito.")
             if (itemInCart) {
                 itemInCart.seleccionados = itemInCart.seleccionados + seleccionados;
+                setCartItems([...cartItems])
                 console.log('Item ya se encuentra en carrito. Se suma cantidad. Total: ', itemInCart.seleccionados);
             }
             else {

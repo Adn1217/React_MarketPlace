@@ -7,12 +7,15 @@ import { CartContext } from './CartContext';
 const CartWidget = () => {
 
   const {cartItems} = useContext(CartContext);
-  const [cartItemsNum, setCartItemsNum] = useState(cartItems.length);
-
-
+  const [cartItemsNum, setCartItemsNum] = useState(0);
+  let cartItemsQty = 0;
+  
+  cartItems.forEach((item) => {
+    cartItemsQty = cartItemsQty + item.seleccionados;
+  } )
+  
   useEffect(() => {
-    setCartItemsNum(0);
-    setCartItemsNum(cartItems.length);
+    setCartItemsNum(cartItemsQty);
   }, [cartItems])
 
   function cartItemsNumber(number){
