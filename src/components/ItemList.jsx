@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import Item from './Item';
 import {toastMsgPopUp} from '../utils/functions.js'
+import {collection, getDocs, getFirestore} from 'firebase/firestore';
 
 const ItemListContainer = ({setSelectedItem, type}) => {
 
@@ -9,30 +10,50 @@ const ItemListContainer = ({setSelectedItem, type}) => {
     const msg ="No hay datos";
 
     useEffect( () => {
-        async function doFetch(stockDataApi){
-            toastMsgPopUp('',"Cargando información.",'info',2000);
-            setTimeout( async () => {
-                let mensaje;
-                try{
-                    let response = await fetch(stockDataApi);  
-                    let data = await response.json();
-                    let products = data.filter((item) => item.Tipo === type);
-                    type !== undefined && (data = products);
-                    products?.length > 0 && (data = products);
-                    mensaje = (data.length>0) ? `Se han encontrado ${data.length} productos.`:"No hay datos";
-                    setStock(data);
-                    return data;
-                }catch(error){
-                    console.log("Ha ocurrido el siguiente error: ", error)
-                    return error;
-                }
-                finally{
-                    console.log("Se realizó consulta de inventario.", mensaje) 
-                }
-            },2000)
+
+        async function doFetch(){
+            const db = getFirestore();
+            let mensaje;
+            try {
+                const data = await getDocs(collection(db,'stock_MarketPlace'));
+                // let productSelected = data.find((item) => item.id==id)
+                let products = data.docs.map( (doc) => ({id: doc.id, ...doc.data()}));
+                console.log(products);
+                mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay datos";
+                setStock(products);
+                return products;
+            }catch(error){
+                console.log("Ha ocurrido el siguiente error: ", error)
+                return error;
+            }finally{
+                console.log("Se realizó la consulta de inventario.", mensaje);
+            }
         }
-        let stockDataApi = type == undefined ? 'stock.json' : '../stock.json';
-        doFetch(stockDataApi);
+        // async function doFetch(stockDataApi){
+        //     toastMsgPopUp('',"Cargando información.",'info',2000);
+        //     setTimeout( async () => {
+        //         let mensaje;
+        //         try{
+        //             let response = await fetch(stockDataApi);  
+        //             let data = await response.json();
+        //             let products = data.filter((item) => item.Tipo === type);
+        //             type !== undefined && (data = products);
+        //             products?.length > 0 && (data = products);
+        //             mensaje = (data.length>0) ? `Se han encontrado ${data.length} productos.`:"No hay datos";
+        //             setStock(data);
+        //             return data;
+        //         }catch(error){
+        //             console.log("Ha ocurrido el siguiente error: ", error)
+        //             return error;
+        //         }
+        //         finally{
+        //             console.log("Se realizó consulta de inventario.", mensaje) 
+        //         }
+        //     },2000)
+        // }
+        // let stockDataApi = type == undefined ? 'stock.json' : '../stock.json';
+        // doFetch(stockDataApi);
+        doFetch();
     }
     , [type]);
 

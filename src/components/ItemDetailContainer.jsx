@@ -3,6 +3,7 @@ import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {CartContext} from './CartContext';
 import {toastMsgPopUp} from '../utils/functions.js'
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 let detail = '../stock.json';
 
@@ -17,26 +18,45 @@ const ItemDetailContainer = () => {
     
     useEffect( () => {
         async function doFetch(id){
-            toastMsgPopUp('',"Cargando información.",'info',1000);
-            setTimeout( async () => {
-                let mensaje;
-                try{
-                    let response = await fetch(detail);  
-                    let data = await response.json();
-                    let productSelected = data.find((item) => item.id==id)
-                    setSelectedItem(productSelected);
-                    mensaje = (productSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
-                    return productSelected;
-                }catch(error){
-                    console.log("Ha ocurrido el siguiente error: ", error)
-                    return error;
-                }
-                finally{
-                    console.log("Se realizó consulta de detalles de inventario.", mensaje) 
-                    setBuscando(false);
-                }
-            },1000)
+            const db = getFirestore();
+            const document = doc(db, "stock_MarketPlace", id);
+            let mensaje;
+            try {
+                const data = await getDoc(document);
+                // let productSelected = data.find((item) => item.id==id)
+                let productSelected =data.data();
+                setSelectedItem(productSelected);
+                mensaje = (data.exists()) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                return productSelected;
+            }catch(error){
+                console.log("Ha ocurrido el siguiente error: ", error)
+                return error;
+            }finally{
+                console.log("Se realizó consulta de detalles de inventario.", mensaje);
+                setBuscando(false);
+            }
         }
+        // async function doFetch(id){
+        //     toastMsgPopUp('',"Cargando información.",'info',1000);
+        //     setTimeout( async () => {
+        //         let mensaje;
+        //         try{
+        //             let response = await fetch(detail);  
+        //             let data = await response.json();
+        //             let productSelected = data.find((item) => item.id==id)
+        //             setSelectedItem(productSelected);
+        //             mensaje = (productSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
+        //             return productSelected;
+        //         }catch(error){
+        //             console.log("Ha ocurrido el siguiente error: ", error)
+        //             return error;
+        //         }
+        //         finally{
+        //             console.log("Se realizó consulta de detalles de inventario.", mensaje) 
+        //             setBuscando(false);
+        //         }
+        //     },1000)
+        // }
         doFetch(id);
         setBuscando(selection +1 ? true: false);
     },[selectedItemId]);
