@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import Item from './Item';
-import {toastMsgPopUp} from '../utils/functions.js'
+import {toastMsgPopUpNoTimer} from '../utils/functions.js'
 import {collection, getDocs, query, where, getFirestore} from 'firebase/firestore';
 
 const ItemListContainer = ({setSelectedItem, type}) => {
@@ -11,14 +11,14 @@ const ItemListContainer = ({setSelectedItem, type}) => {
 
     useEffect( () => {
 
-        async function doFetch(){
+        async function doFetch(type){
             const db = getFirestore();
             const productsCollection = collection(db,'stock_MarketPlace');
             const queryString = type == undefined ? productsCollection : query(productsCollection, where("Tipo", "==", type));
             let mensaje;
+            let toast = toastMsgPopUpNoTimer('',"Cargando productos",'info')
             try {
                 const data = await getDocs(queryString);  
-                // let productSelected = data.find((item) => item.id==id)
                 let products = data.docs.map( (doc) => ({id: doc.id, ...doc.data()}));
                 console.log(products);
                 mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay datos";
@@ -29,6 +29,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
                 return error;
             }finally{
                 console.log("Se realizó la consulta de inventario.", mensaje);
+                toast.close();   
             }
         }
         // async function doFetch(stockDataApi){
@@ -55,8 +56,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
         // }
         // let stockDataApi = type == undefined ? 'stock.json' : '../stock.json';
         // doFetch(stockDataApi);
-        // let stockDataApi = type == undefined ? 'stock.json' : '../stock.json';
-        doFetch();
+        doFetch(type);
     }
     , [type]);
 

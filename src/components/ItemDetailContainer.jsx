@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {CartContext} from './CartContext';
-import {toastMsgPopUp} from '../utils/functions.js'
+import {toastMsgPopUpNoTimer} from '../utils/functions.js'
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 let detail = '../stock.json';
@@ -17,10 +17,11 @@ const ItemDetailContainer = () => {
     let selection = selectedItemId;
     
     useEffect( () => {
+        let toast = toastMsgPopUpNoTimer('',"Cargando productos",'info')
         async function doFetch(id){
-            const db = getFirestore();
-            const document = doc(db, "stock_MarketPlace", id);
-            let mensaje;
+        const db = getFirestore();
+        const document = doc(db,"stock_MarketPlace", id);
+        let mensaje;
             try {
                 const data = await getDoc(document);
                 // let productSelected = data.find((item) => item.id==id)
@@ -33,6 +34,7 @@ const ItemDetailContainer = () => {
                 return error;
             }finally{
                 console.log("Se realizó consulta de detalles de inventario.", mensaje);
+                toast.close();
                 setBuscando(false);
             }
         }

@@ -25,7 +25,7 @@ const Cart = () => {
   }
 
   async function defRemoveList () {
-    let confirmationProm = await ConfMsgPopUp('¿Desea vaciar toda la lista de compra?','');
+    let confirmationProm = await ConfMsgPopUp('¿Desea vaciar toda la lista de compra?',null,null,true);
     if (confirmationProm.isConfirmed){
       clear();
       MsgPopUp('Se ha vaciado el carrito','','info');

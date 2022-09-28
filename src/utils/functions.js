@@ -1,18 +1,19 @@
 
 const Swal = require('sweetalert2');
 
-export function ConfMsgPopUp(msg, title, confMsg) {
+export function ConfMsgPopUp(msg, title, iconType, cancelButton, confMsg) {
     return Swal.fire({
         title: title || '¿Está seguro?',
         text: msg || "Se sobreescribirá la información",
-        icon: 'warning',
-        showCancelButton: true,
+        icon: iconType || 'warning',
+        showCancelButton: cancelButton,
         confirmButtonColor: '#61dafb',
         focusCancel: true, 
         // cancelButtonColor: '#d33',
         confirmButtonText: confMsg || 'Aceptar'
       })
 }
+
 export function MsgPopUp(msg, title, type) {
     Swal.fire({
         icon: type || 'error',
@@ -38,6 +39,18 @@ export function toastMsgPopUp(msg, title, type, time) {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
+      })
+}
+
+export function toastMsgPopUpNoTimer(msg, title, type) {
+    return Swal.fire({
+        
+        icon: type || 'error',
+        position: 'bottom-end',
+        showConfirmButton: false,
+        title: title || 'Ha ocurrido un error',
+        text: msg ||'',
+        toast: true,
       })
 }
 

@@ -107,9 +107,9 @@ button {
   display: flex;
   justify-content: center;
   margin: 1%;
-  max-width: 15rem;
+  /* max-width: 15rem; */
   min-height: 12rem;
-  min-width: 12rem;
+  width: 15rem;
   text-align: center;
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
@@ -123,6 +123,11 @@ button {
 
 .card-body {
   min-height: 13rem;
+  margin-top: 10px;
+}
+
+img {
+  max-height: 100%;
 }
 
 .card-text {
@@ -233,4 +238,8 @@ li {
   to {
     transform: rotate(360deg);
   }
+}
+
+#CargarMock {
+  margin: 20px;
 }
