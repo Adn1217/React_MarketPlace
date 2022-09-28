@@ -5,25 +5,28 @@ import {formatoMoneda} from '../utils/functions.js';
 
 
 const Item = (props) => {
-    const imgURL = '../assets/images/';
     const id = props.id;
-    const Tipo = props.Tipo;
     let detalles = [];
+    let detallesEnOrden={};
     let moneda = formatoMoneda('COP');
-    let images = [];
 
     const { setSelectedItemId} = useContext(CartContext);
 
-    Object.keys(props).map((key) => {
-        if (key !== "setSelectedItem" && key !== "Detalle" && key !=="id" && key !=="ImgName"){
-            let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
-            if (key === "Precio"){
-                info =<li key={key}><strong>{key}:</strong> ${moneda.format(props[key])}<br/></li>;
-            }
-            detalles.push(info);
-        }
-    })
+    detallesEnOrden.Tipo = props.Tipo;
+    detallesEnOrden.Nombre = props.Nombre;
+    props.Marca ? detallesEnOrden.Marca = props.Marca : detallesEnOrden.Editorial = props.Editorial; 
+    detallesEnOrden.Anio = props.Anio;
+    detallesEnOrden.Precio = props.Precio;
+    detallesEnOrden.Cantidad = props.Cantidad;
 
+    Object.keys(detallesEnOrden).map((key) => {
+        let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
+        if (key === "Precio"){
+            info =<li key={key}><strong>{key}:</strong> ${moneda.format(props[key])}<br/></li>;
+        }
+        detalles.push(info);
+    })
+    
     const url = `/item/${id}`;
 
     function itemSelection(id){

@@ -20,7 +20,7 @@ const Cart = () => {
   }, [cartItems])
 
   function defRemoveItem (id) {
-    toastMsgPopUp('',"Se ha eliminado el producto.",'info',1000);
+    toastMsgPopUp('',"Se ha eliminado el producto.",'success',1000);
     removeItem(id);
   }
 
@@ -28,12 +28,12 @@ const Cart = () => {
     let confirmationProm = await ConfMsgPopUp('¿Desea vaciar toda la lista de compra?',null,null,true);
     if (confirmationProm.isConfirmed){
       clear();
-      MsgPopUp('Se ha vaciado el carrito','','info');
+      MsgPopUp('Se ha vaciado el carrito','','success');
       console.log("Se ha vaciado el carrito");
     }
   }
 
-  if (defItems.length == 0) {
+  if (defItems.length === 0) {
     listaCompra = <>No hay productos en su carrito <Link to={'/'} className="nav-link" >Volver al inicio...</Link></>;
   }else{
     listaCompra = [];

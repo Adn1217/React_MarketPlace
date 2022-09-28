@@ -5,8 +5,6 @@ import {CartContext} from './CartContext';
 import {toastMsgPopUpNoTimer} from '../utils/functions.js'
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
-let detail = '../stock.json';
-
 const ItemDetailContainer = () => {
 
     const [selectedItem, setSelectedItem] = useState([]);
@@ -24,10 +22,10 @@ const ItemDetailContainer = () => {
         let mensaje;
             try {
                 const data = await getDoc(document);
-                // let productSelected = data.find((item) => item.id==id)
                 let productSelected =data.data();
-                setSelectedItem(productSelected);
+                // setSelectedItem({id,...productSelected});
                 mensaje = (data.exists()) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                data.exists() && setSelectedItem({id,...productSelected});
                 return productSelected;
             }catch(error){
                 console.log("Ha ocurrido el siguiente error: ", error)
@@ -38,27 +36,6 @@ const ItemDetailContainer = () => {
                 setBuscando(false);
             }
         }
-        // async function doFetch(id){
-        //     toastMsgPopUp('',"Cargando información.",'info',1000);
-        //     setTimeout( async () => {
-        //         let mensaje;
-        //         try{
-        //             let response = await fetch(detail);  
-        //             let data = await response.json();
-        //             let productSelected = data.find((item) => item.id==id)
-        //             setSelectedItem(productSelected);
-        //             mensaje = (productSelected.Cantidad>0) ? "Se ha encontrado detalle de producto.":"No hay datos";
-        //             return productSelected;
-        //         }catch(error){
-        //             console.log("Ha ocurrido el siguiente error: ", error)
-        //             return error;
-        //         }
-        //         finally{
-        //             console.log("Se realizó consulta de detalles de inventario.", mensaje) 
-        //             setBuscando(false);
-        //         }
-        //     },1000)
-        // }
         doFetch(id);
         setBuscando(selection +1 ? true: false);
     },[selectedItemId]);
