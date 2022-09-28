@@ -124,6 +124,11 @@ button {
 .card-body {
   min-height: 13rem;
   margin-top: 10px;
+  text-align: left;
+}
+
+.card-body div{
+  text-align: center;
 }
 
 img {
