@@ -11,7 +11,7 @@ const CartWidget = () => {
   let cartItemsQty = 0;
   
   cartItems.forEach((item) => {
-    cartItemsQty = cartItemsQty + item.seleccionados;
+    cartItemsQty += item.seleccionados;
   } )
   
   useEffect(() => {

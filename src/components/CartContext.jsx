@@ -22,13 +22,13 @@ const CartProvider = ({defaultValue = [], children}) =>{
 
     const addItem = (newItem, seleccionados) =>{
 
-        if (cartItems.length == 0) {
+        if (cartItems.length === 0) {
             newItem = {...newItem, seleccionados} 
             setCartItems([...cartItems, newItem]);
             console.log('Se agregó el item al carrito');
         }else{
             newItem.id ?? console.log("Item no definido.");
-            let itemInCart = newItem.id>=0 && (isInCart(newItem.id)); 
+            let itemInCart = isInCart(newItem.id); 
             itemInCart ?? console.log("No se encuentra en el carrito.")
             if (itemInCart) {
                 itemInCart.seleccionados = itemInCart.seleccionados + seleccionados;

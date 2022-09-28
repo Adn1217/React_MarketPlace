@@ -45,7 +45,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         if(Cantidad > 0 && seleccionados < Cantidad){
             CambiarSeleccionados(1);
             setearRestarOff(false);
-            setearSumarOff(seleccionados + 1 == Cantidad ? true : false);
+            setearSumarOff(seleccionados + 1 === Cantidad ? true : false);
         }else{
             setearSumarOff(true);
         }
@@ -55,14 +55,14 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         if(seleccionados > 0){
             CambiarSeleccionados(-1);
             setearSumarOff(false);
-            setearRestarOff(seleccionados - 1 == 0 ? true : false);
+            setearRestarOff(seleccionados - 1 === 0 ? true : false);
         }else{
             setearRestarOff(true);
         }
     }
 
   function onAdd(){
-      toastMsgPopUp('',"Se ha agregado el producto.",'info',1000);
+      toastMsgPopUp('',"Se ha agregado el producto.",'success',1000);
       setItemCountOff(true);
       addItem(item, seleccionados);
   }

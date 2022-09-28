@@ -10,8 +10,9 @@ const ItemDetail = (props) => {
 
   let detalles = [];
 
+  
   useEffect(() => {
-    setItemSelected(props == undefined);
+    setItemSelected(props === undefined);
   }, [props])
   
   Object.keys(props.Detalle ?? []).map((key) => {
