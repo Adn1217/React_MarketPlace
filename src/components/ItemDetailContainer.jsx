@@ -23,7 +23,6 @@ const ItemDetailContainer = () => {
             try {
                 const data = await getDoc(document);
                 let productSelected =data.data();
-                // setSelectedItem({id,...productSelected});
                 mensaje = (data.exists()) ? "Se ha encontrado detalle de producto.":"No hay datos";
                 data.exists() && setSelectedItem({id,...productSelected});
                 return productSelected;

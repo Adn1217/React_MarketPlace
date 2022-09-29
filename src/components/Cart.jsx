@@ -33,6 +33,10 @@ const Cart = () => {
     }
   }
 
+  function mostrarTotal(total){
+    return <p key={total} className="animate__animated animate__tada">${total}</p>
+  }
+
   if (defItems.length === 0) {
     listaCompra = <>No hay productos en su carrito <Link to={'/'} className="nav-link" >Volver al inicio...</Link></>;
   }else{
@@ -60,15 +64,15 @@ const Cart = () => {
   
   return (
     <div >  
-        <h1>Su compra ha finalizado</h1>
-        <h2>A continuación se encuentra la lista de su compra: </h2>
+        <h1 className="animate__animated animate__backInLeft">Su compra ha finalizado</h1>
+        <h2 className="animate__animated animate__backInRight">A continuación se encuentra la lista de su compra: </h2>
         <ol className = "card">
             <hr/>
             {listaCompra}
             <hr/>         
         </ol>
         <div id="Total">
-          <h3>Total a pagar: ${totalMoneda}</h3>
+          <h3>Total a pagar: {mostrarTotal(totalMoneda)}</h3>
           {(defItems.length > 0) && (
           <div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
               <button ><img src={deleteLogoAll} className="Delete-logo" alt="deleteAllLogo"/></button>
