@@ -1,6 +1,6 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
-import {MsgPopUp, toastMsgPopUpNoTimer} from '../utils/functions.js'
+import {MsgPopUp, toastMsgPopUpNoTimer, ConfMsgPopUp} from '../utils/functions.js'
 import {CartContext} from './CartContext';
 
 const UserForm = ({items, total}) => {
@@ -9,7 +9,7 @@ const UserForm = ({items, total}) => {
     const {clear} = useContext(CartContext);
     const [sending, setSending] = useState(false);
 
-    function trySendOrder(){
+    async function trySendOrder(){
 
         let nombres = document.getElementById("nombres").value.trim();
         let apellidos = document.getElementById("apellidos").value.trim();
@@ -25,7 +25,10 @@ const UserForm = ({items, total}) => {
             MsgPopUp('Información incompleta. No es posible procesar la orden.','', 'error')
             console.log("Información incompleta. No es posible procesar la orden.")
         } else {
+            let confirmationProm = await ConfMsgPopUp(`¿Desea realizar la compra por ${total}?`,null,null,true);
+            if (confirmationProm.isConfirmed){
             sendOrder(nombres, apellidos, identity, edad, pais, telephone, mail, items, total)
+            }
         }
 
     }
@@ -62,6 +65,21 @@ const UserForm = ({items, total}) => {
         MsgPopUp('La orden fue cargada exitosamente con el id: '+orderId,'', 'success')
         clear(); 
         return orderId;
+    }
+
+    async function tryCleanForm(){
+        let confirmationProm = await ConfMsgPopUp('¿Desea limpiar todo el formulario?',null,null,true);
+        if (confirmationProm.isConfirmed){
+            cleanForm();
+            MsgPopUp('Se ha limpiado el formulario','','success');
+            console.log("Se ha limpiado el formulario");
+        }
+    }
+
+    function cleanForm(){
+        const formInputs = [document.getElementById("nombres"), document.getElementById("apellidos"), document.getElementById("identity"), document.getElementById("edad"), document.getElementById("tel"), document.getElementById("user"), document.getElementById("userServer")];
+        formInputs.forEach((input) => input.value='');
+        document.getElementById("countries").value='Argentina';
     }
 
     return (
@@ -107,7 +125,7 @@ const UserForm = ({items, total}) => {
                 </fieldset>
                 <hr/>
                 <div className="buttons">
-                        <button id="botonLimpiar" type="button" className="btn btn-secondary">Limpiar</button>
+                        <button id="botonLimpiar" type="button" className="btn btn-secondary" onClick={() => tryCleanForm()}>Limpiar</button>
                         <button id="botonEnviar" type="button" className="btn btn-primary" onClick = {() => trySendOrder()}>{sending ? (<><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         <span className="visually-hidden">Enviando...</span></>) : "Comprar"}</button>
                 </div>
