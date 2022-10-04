@@ -31,6 +31,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         setAgregarOff(!(Cantidad>0 && quantity>0));
         selectedItems !== undefined && (setAvailableStock(Cantidad - selectedItems.seleccionados - seleccionados));
         selectedItems ?? setAvailableStock(Cantidad - seleccionados);
+        // !(Cantidad>0 && quantity>0) && (document.getElementById("Agregar").removeAttribute("onClick"));
     }, [quantity])
 
     function setearSumarOff (flag) {
@@ -69,9 +70,12 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     }
 
     function onAdd(){
-        toastMsgPopUp('',"Se ha agregado el producto.",'success',1000);
-        setItemCountOff(true);
-        addItem(item, seleccionados);
+
+        if(!agregarOff){
+            toastMsgPopUp('',"Se ha agregado el producto.",'success',1000);
+            setItemCountOff(true);
+            addItem(item, seleccionados);
+        }
     }
 
   return (
