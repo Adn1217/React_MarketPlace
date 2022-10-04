@@ -3,7 +3,6 @@ import shoppingCart from '../assets/images/shopping-cart.png';
 import {Link} from 'react-router-dom';
 import { CartContext } from './CartContext';
 
-
 const CartWidget = () => {
 
   const {cartItems} = useContext(CartContext);

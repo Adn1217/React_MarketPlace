@@ -16,24 +16,25 @@ const ItemDetailContainer = () => {
     
     useEffect( () => {
         let toast = toastMsgPopUpNoTimer('',"Cargando productos",'info')
+
         async function doFetch(id){
-        const db = getFirestore();
-        const document = doc(db,"stock_MarketPlace", id);
-        let mensaje;
-            try {
-                const data = await getDoc(document);
-                let productSelected =data.data();
-                mensaje = (data.exists()) ? "Se ha encontrado detalle de producto.":"No hay datos";
-                data.exists() && setSelectedItem({id,...productSelected});
-                return productSelected;
-            }catch(error){
-                console.log("Ha ocurrido el siguiente error: ", error)
-                return error;
-            }finally{
-                console.log("Se realizó consulta de detalles de inventario.", mensaje);
-                toast.close();
-                setBuscando(false);
-            }
+            const db = getFirestore();
+            const document = doc(db,"stock_MarketPlace", id);
+            let mensaje;
+                try {
+                    const data = await getDoc(document);
+                    let productSelected =data.data();
+                    mensaje = (data.exists()) ? "Se ha encontrado detalle de producto.":"No hay datos";
+                    data.exists() && setSelectedItem({id,...productSelected});
+                    return productSelected;
+                }catch(error){
+                    console.log("Ha ocurrido el siguiente error: ", error)
+                    return error;
+                }finally{
+                    console.log("Se realizó consulta de detalles de inventario.", mensaje);
+                    toast.close();
+                    setBuscando(false);
+                }
         }
         doFetch(id);
         setBuscando(selection +1 ? true: false);

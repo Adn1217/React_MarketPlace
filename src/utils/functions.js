@@ -63,3 +63,15 @@ export function formatoMoneda(currency) {
     let moneda = new Intl.NumberFormat('es-ES', currencyFormato);
     return moneda
 }
+
+export function guardarDataLocal(items, nombre){
+    let dataLocalStr = JSON.stringify(items, nombre);
+    localStorage.setItem(nombre, dataLocalStr);
+}
+
+export function cargarDataLocal(nombre){
+    let localData = JSON.parse(localStorage.getItem(nombre)) || [];
+    // localData.length ?? console.log("Data local cargada exitosamente");
+    // localData.length==0 && console.log("No existen datos locales");
+    return localData;
+}

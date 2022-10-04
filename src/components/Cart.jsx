@@ -1,13 +1,16 @@
 
-import React, {useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {CartContext} from './CartContext';
 import deleteLogo from '../assets/images/delete.png';
 import deleteLogoAll from '../assets/images/deleteAll.png';
+import buyCartLogo from '../assets/images/buy.png';
 import {Link} from 'react-router-dom';
 import {ConfMsgPopUp, MsgPopUp, toastMsgPopUp, formatoMoneda} from '../utils/functions.js';
+import UserForm from './UserForm';
 
 const Cart = () => {
   const {cartItems, removeItem, clear} = useContext(CartContext);
+  const [showUserForm, setShowUserForm] = useState(false);
   let defItems = [...cartItems];
   let moneda = formatoMoneda('COP');
 
@@ -22,6 +25,7 @@ const Cart = () => {
   function defRemoveItem (id) {
     toastMsgPopUp('',"Se ha eliminado el producto.",'success',1000);
     removeItem(id);
+    cartItems.length == 0 && setShowUserForm(false);
   }
 
   async function defRemoveList () {
@@ -29,12 +33,17 @@ const Cart = () => {
     if (confirmationProm.isConfirmed){
       clear();
       MsgPopUp('Se ha vaciado el carrito','','success');
+      setShowUserForm(false);
       console.log("Se ha vaciado el carrito");
     }
   }
 
   function mostrarTotal(total){
     return <p key={total} className="animate__animated animate__tada">${total}</p>
+  }
+
+  function payCart(){
+    setShowUserForm(true);
   }
 
   if (defItems.length === 0) {
@@ -61,7 +70,6 @@ const Cart = () => {
     })
   }
 
-  
   return (
     <div >  
         <h1 className="animate__animated animate__backInLeft">Su compra ha finalizado</h1>
@@ -74,10 +82,15 @@ const Cart = () => {
         <div id="Total">
           <h3>Total a pagar: {mostrarTotal(totalMoneda)}</h3>
           {(defItems.length > 0) && (
-          <div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
+          <><div className="eliminarTodo" id={"eliminarTodo"} onClick={() =>defRemoveList()} >
               <button ><img src={deleteLogoAll} className="Delete-logo" alt="deleteAllLogo"/></button>
-          </div>)}
+          </div>
+          <div className="buyCart" id={"payCart"} onClick={() =>payCart()} >
+              <button ><img src={buyCartLogo} className="Delete-logo" alt="deleteAllLogo"/></button>
+          </div>
+          </>)}
         </div>
+        {showUserForm && <UserForm items={cartItems} total={totalMoneda}/>}
     </div>
   );
 }

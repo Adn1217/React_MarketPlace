@@ -173,7 +173,7 @@ ol.card a {
   vertical-align: middle;
 }
 
-.eliminar:hover, .eliminarTodo:hover {
+.eliminar:hover, .eliminarTodo:hover, .buyCart:hover {
   transform: scale(1.1);
 }
 
@@ -247,4 +247,90 @@ li {
 
 #CargarMock {
   margin: 20px;
+}
+
+/*--------------Buyer Formulary style */
+.buyerForm {
+  /* display: flex; */
+  align-items: center;
+  margin: auto;
+  width: 95%;
+}
+
+
+fieldset {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+
+
+.buyerForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+input {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  width: 20%;
+}
+
+.form-control {
+  margin: 0px 5px;
+}
+
+#initFields .form-control, .form-select{
+  margin: 5px;
+  min-width: 150px;
+  max-width: 50%;
+}
+
+#initFields__EdadPais {
+  max-width: 60%;
+  display: flex;
+  width: 50%;
+}
+
+#initFields__EdadPais input {
+  min-width: 20%;
+  max-width: 40%;
+}
+
+#countries {
+  display: inline-block;
+}
+
+label {
+  padding: 0px 5px;
+  margin: 5px;
+}
+
+.credentials {
+  padding: 10px;
+  width: 50%;
+  min-width: 300px;
+}
+
+#server {
+  display: flex;
+  width: 50%;
+}
+
+#credenciales span{
+  width: 30%;
+  max-width: 40px;
+}
+
+#server input {
+  margin-left: 0px;
+  min-width: 70%;
+}
+
+.buttons button {
+  margin: 5px;
 }
