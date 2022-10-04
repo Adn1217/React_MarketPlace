@@ -21,7 +21,6 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     useEffect (() => {
         let selectedItems = cartItems.find((cartItem) => cartItem.id === item.id);
         selectedItems !== undefined && (setAvailableStock(Cantidad - selectedItems.seleccionados - seleccionados));
-        selectedItems !== undefined && console.log(Cantidad - selectedItems.seleccionados - seleccionados)
         selectedItems ?? setAvailableStock(Cantidad);
         setearSumarOff(!(Cantidad !== undefined && Cantidad>0));
         selectedItems !== undefined && setearSumarOff(!(Cantidad >0 && (Cantidad - selectedItems.seleccionados - seleccionados>0)));
