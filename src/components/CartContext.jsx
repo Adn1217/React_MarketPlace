@@ -1,13 +1,25 @@
 import React, {useEffect, useState} from 'react';
-
+import {guardarDataLocal, cargarDataLocal} from '../utils/functions.js';
 export const CartContext = React.createContext();
 
 const CartProvider = ({defaultValue = [], children}) =>{
 
     const [cartItems, setCartItems] = useState(defaultValue);
     const [selectedItemId, setSelectedItemId] = useState(defaultValue);
+    let dataLocal = [];
+
+    useEffect(() => {
+        dataLocal = cargarDataLocal("carrito");
+        if (dataLocal !== 0){
+          console.log("Data local cargada exitosamente",dataLocal);
+          setCartItems(dataLocal);
+        } else {
+          console.log("No hay data local")
+        }
+      }, [])
 
     useEffect (() => {
+        dataLocal !== cartItems && (guardarDataLocal(cartItems, "carrito"));
         console.log("Items en carrito: ", cartItems)
     }, [cartItems])
 

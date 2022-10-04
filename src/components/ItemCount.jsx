@@ -7,23 +7,31 @@ import {toastMsgPopUp} from '../utils/functions.js'
 const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
 
     const [seleccionados, setSeleccionados] = useState(0);
+    const [availableStock, setAvailableStock] = useState(item.Cantidad);
     const [SumarOff, setSumarOff] = useState(true);
     const [RestarOff, setRestarOff] = useState(true);
-    const [agregarOff, setAgregarOff] = useState(false);
+    const [agregarOff, setAgregarOff] = useState(true);
     const [claseResta, setClaseResta] = useState("col-md-3")
     const [claseSuma, setClaseSuma] = useState("col-md-3")
 
-    const {addItem} = useContext(CartContext);
-
+    const {cartItems, addItem} = useContext(CartContext);
     let Cantidad = item.Cantidad;
+    let selectedItems = cartItems.find((cartItem) => cartItem.id === item.id);
 
     useEffect (() => {
+        let selectedItems = cartItems.find((cartItem) => cartItem.id === item.id);
+        selectedItems !== undefined && (setAvailableStock(Cantidad - selectedItems.seleccionados - seleccionados));
+        selectedItems !== undefined && console.log(Cantidad - selectedItems.seleccionados - seleccionados)
+        selectedItems ?? setAvailableStock(Cantidad);
         setearSumarOff(!(Cantidad !== undefined && Cantidad>0));
-        setearRestarOff(true)
+        selectedItems !== undefined && setearSumarOff(!(Cantidad >0 && (Cantidad - selectedItems.seleccionados - seleccionados>0)));
+        setearRestarOff(true);
     }, [])
 
     useEffect(() =>{
-        setAgregarOff(!((Cantidad>0) && quantity>0))
+        setAgregarOff(!(Cantidad>0 && quantity>0));
+        selectedItems !== undefined && (setAvailableStock(Cantidad - selectedItems.seleccionados - seleccionados));
+        selectedItems ?? setAvailableStock(Cantidad - seleccionados);
     }, [quantity])
 
     function setearSumarOff (flag) {
@@ -45,7 +53,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         if(Cantidad > 0 && seleccionados < Cantidad){
             CambiarSeleccionados(1);
             setearRestarOff(false);
-            setearSumarOff(seleccionados + 1 === Cantidad ? true : false);
+            setearSumarOff((seleccionados + 1 === Cantidad || availableStock - 1 == 0) ? true : false);
         }else{
             setearSumarOff(true);
         }
@@ -61,11 +69,11 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         }
     }
 
-  function onAdd(){
-      toastMsgPopUp('',"Se ha agregado el producto.",'success',1000);
-      setItemCountOff(true);
-      addItem(item, seleccionados);
-  }
+    function onAdd(){
+        toastMsgPopUp('',"Se ha agregado el producto.",'success',1000);
+        setItemCountOff(true);
+        addItem(item, seleccionados);
+    }
 
   return (
     <>
