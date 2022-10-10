@@ -46,8 +46,8 @@ const Suggested = () => {
                 >
                 Repositorio donde se encontrará mi aplicación de mercado en línea en <strong>React</strong>.
                 </a>
-                <div id="CargarMock" onClick={()=>addMockToFirebase()} >
-                <button className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
+                <div id="CargarMock"  >
+                <button onClick={()=>addMockToFirebase()} className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
         </div>
             <hr />
         </div>)

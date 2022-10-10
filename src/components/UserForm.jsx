@@ -43,7 +43,8 @@ const UserForm = ({items, total}) => {
         items.forEach((item) => { itemsInCart.push(
             {id: item.id,
             title: item.Nombre,
-            price: item.Precio})
+            price: item.Precio,
+            quantity: item.seleccionados})
         })
         const order = {
             buyer: {name: nombres,

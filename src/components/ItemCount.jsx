@@ -31,7 +31,6 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         setAgregarOff(!(Cantidad>0 && quantity>0));
         selectedItems !== undefined && (setAvailableStock(Cantidad - selectedItems.seleccionados - seleccionados));
         selectedItems ?? setAvailableStock(Cantidad - seleccionados);
-        // !(Cantidad>0 && quantity>0) && (document.getElementById("Agregar").removeAttribute("onClick"));
     }, [quantity])
 
     function setearSumarOff (flag) {
