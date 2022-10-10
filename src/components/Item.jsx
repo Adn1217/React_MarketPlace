@@ -10,7 +10,7 @@ const Item = (props) => {
     let detallesEnOrden={};
     let moneda = formatoMoneda('COP');
 
-    const { setSelectedItemId} = useContext(CartContext);
+    const {setSelectedItemId} = useContext(CartContext);
 
     detallesEnOrden.Tipo = props.Tipo;
     detallesEnOrden.Nombre = props.Nombre;

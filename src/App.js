@@ -22,8 +22,12 @@ function App() {
             <Route exact path='/item/:id' element={<ItemDetailContainer />} />
             <Route exact path='/cart' element={<Cart />} />
           </Routes>
-          <Suggested />
-          <Discounts />
+          {/* <Suggested /> */}
+          <Routes>
+            <Route exact path='/cart' element={<Suggested />} />
+            <Route exact path='/category/:categoryId' element={<Discounts />} />
+            <Route exact path='/' element={<Discounts />} />
+          </Routes>
           <Footer />
         </Router>
       </CartProvider>

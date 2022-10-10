@@ -1,10 +1,14 @@
 import React from 'react';
+import ItemListContainer from './ItemListContainer';
 
 const Discounts = () => {
+
     return (
         <div>
-            <h1>Aquí van los descuentos</h1>
             <hr />
+            <h1>Descuentos</h1>
+            <hr />
+            <ItemListContainer discounts={true}/>
         </div>)
 }
 

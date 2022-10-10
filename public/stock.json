@@ -14,7 +14,8 @@
             "ROM": "512 GB",
             "Video": "NVidia",
             "VideoRef": "GTX 1080"
-        }
+        },
+        "Descuento": "No"
     },
     {
         "Tipo": "Tecnologia",
@@ -31,7 +32,8 @@
             "ROM": "512 GB",
             "Video": "Radeon",
             "VideoRef": "RX 1700 "
-        }
+        },
+        "Descuento": "No"
     },
     {
         "Tipo": "Tecnologia",
@@ -48,7 +50,8 @@
             "ROM": "512 GB",
             "Video": "NO",
             "VideoRef": "NA"
-        }
+        },
+        "Descuento": "No"
     },
     {
         "Tipo": "Libros",
@@ -62,7 +65,8 @@
             "Autor": "Stephen King.",
             "Ranking": "5 estrellas.",
             "Sinopsis": "Continuación de la famosa novela \"El Resplandor\"."
-        }
+        },
+        "Descuento": "No"
     },
     {
         "Tipo": "Libros",
@@ -76,6 +80,40 @@
             "Autor": "Jordan Peterson",
             "Ranking": "4 estrellas.",
             "Sinopsis": "Tomo dos del análisis sicológico del reputado doctor en siquiatría."
-        }
+        },
+        "Descuento": "No"
+    },
+    {
+        "Tipo": "Libros",
+        "Nombre": "Temina bien tu día",
+        "ImgName": "https://firebasestorage.googleapis.com/v0/b/marketplace-adn1217.appspot.com/o/TerminaBienTuDia.jpg?alt=media&token=6c9ff1dd-9030-4c97-b3ab-5431c77ea00c",
+        "Editorial": "Faith Words",
+        "Anio": 2021,
+        "Precio": 62000,
+        "Cantidad": 2,
+        "Detalle": {
+            "Autor": "Joyce Meyer",
+            "Ranking": "5 estrellas.",
+            "Sinopsis": "Devocional cristiano para cada noche del año."
+        },
+        "Descuento": "Sí"
+    },
+    {
+        "Tipo": "Tecnologia",
+        "Nombre": "DELL Vostro",
+        "ImgName": "https://firebasestorage.googleapis.com/v0/b/marketplace-adn1217.appspot.com/o/DellVostro.webp?alt=media&token=a6ac7b1e-b499-4c15-9cc1-b896c8e2fbdd",
+        "Marca": "DELL",
+        "Anio": 2021,
+        "Precio": 1649000,
+        "Cantidad": 3,
+        "Detalle": {
+            "Procesador": "AMD Ryzen 5",
+            "RAM": "8 GB",
+            "Disco": "SSD",
+            "ROM": "256 GB",
+            "Video": "AMD RADEON",
+            "VideoRef": "RX Vega 8"
+        },
+        "Descuento": "Sí"
     }
 ]
