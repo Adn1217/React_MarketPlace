@@ -34,21 +34,14 @@ async function addMockToFirebase() {
 const Suggested = () => {
     return (
         <div>
+            <hr />
             <h1>Sugerencias</h1>
-                <p>
-                Esta es la octava entrega, <code>el código</code> será editado próximamente.
-                </p>
-                <a
-                className="App-link"
-                href="https://github.com/Adn1217/React_MarketPlace"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Repositorio donde se encontrará mi aplicación de mercado en línea en <strong>React</strong>.
-                </a>
+                <p>Sugerencias basadas en sus <code>compras</code> anteriores.</p>
+                <a className="App-link" href="https://github.com/Adn1217/React_MarketPlace"
+                target="_blank" rel="noopener noreferrer"> Repositorio donde se encuentra mi aplicación de mercado en línea en <strong>React</strong>.</a>
                 <div id="CargarMock"  >
-                <button onClick={()=>addMockToFirebase()} className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
-        </div>
+                    <button onClick={()=>addMockToFirebase()} className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
+                </div>
             <hr />
         </div>)
 }
