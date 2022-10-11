@@ -4,17 +4,18 @@ import Item from './Item';
 import {toastMsgPopUpNoTimer} from '../utils/functions.js'
 import {collection, getDocs, query, where, getFirestore} from 'firebase/firestore';
 
-const ItemListContainer = ({setSelectedItem, type}) => {
+const ItemListContainer = ({type, discounts}) => {
 
     const [stock, setStock] = useState();
     const msg ="No hay datos";
 
     useEffect( () => {
 
-        async function doFetch(type){
+        async function doFetch(type, discounts){
             const db = getFirestore();
             const productsCollection = collection(db,'stock_MarketPlace');
-            const queryString = type === undefined ? productsCollection : query(productsCollection, where("Tipo", "==", type));
+            const queryString = type === undefined ? 
+                (!discounts ? productsCollection : query(productsCollection, where("Descuento", "==", "Sí"))) : (!discounts ? query(productsCollection, where("Tipo", "==", type)): query(productsCollection, where("Tipo", "==", type), where("Descuento", "==", "Sí")));
             let mensaje;
             let toast = toastMsgPopUpNoTimer('',"Cargando productos",'info')
             try {
@@ -32,7 +33,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
                 toast.close();   
             }
         }
-        doFetch(type);
+        doFetch(type, discounts);
     }
     , [type]);
 
@@ -47,7 +48,7 @@ const ItemListContainer = ({setSelectedItem, type}) => {
            (
                 stock?.map((item) => 
                         <ul className="animate__animated animate__backInUp" key={item.id} id={item.id} >
-                            <Item {...item} setSelectedItem={setSelectedItem} />
+                            <Item {...item} />
                         </ul> )
             )
         )

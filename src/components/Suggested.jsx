@@ -34,9 +34,9 @@ async function addMockToFirebase() {
 const Suggested = () => {
     return (
         <div>
-            <h1>Aquí van los artículos sugeridos</h1>
+            <h1>Sugerencias</h1>
                 <p>
-                Esta es la septima entrega, <code>el código</code> será editado próximamente.
+                Esta es la octava entrega, <code>el código</code> será editado próximamente.
                 </p>
                 <a
                 className="App-link"
@@ -46,8 +46,8 @@ const Suggested = () => {
                 >
                 Repositorio donde se encontrará mi aplicación de mercado en línea en <strong>React</strong>.
                 </a>
-                <div id="CargarMock" onClick={()=>addMockToFirebase()} >
-                <button className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
+                <div id="CargarMock"  >
+                <button onClick={()=>addMockToFirebase()} className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
         </div>
             <hr />
         </div>)

@@ -23,7 +23,7 @@ const CartWidget = () => {
 
   return (
     <div className="App-header-Chart">
-        <Link to={'/Cart'} ><img src={shoppingCart} className="ShoppingChart-logo" alt="logo"/></Link>
+        <Link to={'/cart'} ><img src={shoppingCart} className="ShoppingChart-logo" alt="logo"/></Link>
         {cartItemsNum > 0 ? cartItemsNumber(cartItemsNum):""}
     </div>
   );

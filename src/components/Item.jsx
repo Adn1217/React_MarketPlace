@@ -6,11 +6,12 @@ import {formatoMoneda} from '../utils/functions.js';
 
 const Item = (props) => {
     const id = props.id;
+    const descuento = props.Descuento==="Sí";
     let detalles = [];
     let detallesEnOrden={};
     let moneda = formatoMoneda('COP');
 
-    const { setSelectedItemId} = useContext(CartContext);
+    const {setSelectedItemId} = useContext(CartContext);
 
     detallesEnOrden.Tipo = props.Tipo;
     detallesEnOrden.Nombre = props.Nombre;
@@ -35,7 +36,10 @@ const Item = (props) => {
     }
 
   return (
-    <div className="card">
+    <div className={descuento ? "card discount" : "card"}>
+        { descuento && <div className="waterMark">
+                {/* Descuento */}
+        </div>}
         <Link to={url} onClick={()=>itemSelection(id)}><img src={props.ImgName} className="card-img-top" alt="pcImage1"/></Link>
         <div className="card-body">
             <p className="card-text">
