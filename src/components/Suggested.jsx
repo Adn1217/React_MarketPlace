@@ -1,6 +1,8 @@
 import React from 'react';
 import {ConfMsgPopUp, MsgPopUp, toastMsgPopUpNoTimer} from '../utils/functions.js';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
+import ItemListContainer from './ItemListContainer';
+import {guardarDataLocal, cargarDataLocal} from '../utils/functions.js';
 
 async function addMockToFirebase() {
     const stockData = 'stock.json';
@@ -32,6 +34,16 @@ async function addMockToFirebase() {
 }
 
 const Suggested = () => {
+    
+    let compras = cargarDataLocal("Compra");
+    let itemsIdList = [];
+
+    compras.length > 0 && compras.forEach( (item) => {
+        itemsIdList.find(itemId => itemId === item.id) ?? itemsIdList.push(item.id);
+    })
+    
+    compras.length === 0 && (itemsIdList.push('NoHayCompra'));
+
     return (
         <div>
             <hr />
@@ -42,6 +54,7 @@ const Suggested = () => {
                 <div id="CargarMock"  >
                     <button onClick={()=>addMockToFirebase()} className="btn btn-outline-primary">Agregar Mock de datos a Firebase</button>
                 </div>
+                <ItemListContainer itemsIdList={itemsIdList}/>
             <hr />
         </div>)
 }

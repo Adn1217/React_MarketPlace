@@ -23,6 +23,7 @@ function App() {
             <Route exact path='/cart' element={<Cart />} />
           </Routes>
           <Routes>
+            <Route exact path='/item/:id' element={<Discounts />} />
             <Route exact path='/cart' element={<Suggested />} />
             <Route exact path='/category/:categoryId' element={<Discounts />} />
             <Route exact path='/' element={<Discounts />} />

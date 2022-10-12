@@ -8,13 +8,14 @@ const ItemListContainer = (props) => {
   
   return (
     <div className="container imgContainer">
-        <ItemList type={categoryId} discounts={props.discounts}/>
+        <ItemList type={categoryId} discounts={props.discounts} itemsIdList={props.itemsIdList}/>
     </div>
   );
 }
 
 ItemListContainer.defaultProps = {
-  discounts : false
+  discounts : false,
+  itemsIdList : [] 
 }
 
 export default ItemListContainer;
