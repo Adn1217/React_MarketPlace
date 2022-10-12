@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
 import {MsgPopUp, toastMsgPopUpNoTimer, ConfMsgPopUp} from '../utils/functions.js'
 import {CartContext} from './CartContext';
+import {guardarDataLocal, cargarDataLocal} from '../utils/functions.js';
 
 const UserForm = ({items, total}) => {
     
@@ -63,8 +64,11 @@ const UserForm = ({items, total}) => {
         console.log('Compra realizada : ',order);
         toast.close();
         setSending(false);
-        MsgPopUp('La orden fue cargada exitosamente con el id: '+orderId,'', 'success')
-        clear(); 
+        MsgPopUp('La orden fue cargada exitosamente con el id: '+orderId,'', 'success');
+        let compras = cargarDataLocal("Compra");
+        compras.length == 0 && guardarDataLocal(itemsInCart, "Compra");
+        compras.length > 0 && guardarDataLocal([...compras,...itemsInCart], "Compra");
+        clear();    
         return orderId;
     }
 

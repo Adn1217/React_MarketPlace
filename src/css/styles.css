@@ -121,13 +121,6 @@ button {
   justify-content:center;
 }
 
-/* .discount {
-  background-color: gray;
-} */
-/* .waterMark{
-  opacity: 0;
-}; */
-
 .discount .waterMark {
   opacity: 0.75;
 }

@@ -2,27 +2,27 @@
 import React, {useEffect, useState} from 'react';
 import Item from './Item';
 import {toastMsgPopUpNoTimer} from '../utils/functions.js'
-import {collection, getDocs, query, where, getFirestore} from 'firebase/firestore';
+import {collection, documentId, getDocs, getFirestore, query, where} from 'firebase/firestore';
 
-const ItemListContainer = ({type, discounts}) => {
+const ItemList = ({type, discounts, itemsIdList}) => {
 
     const [stock, setStock] = useState();
     const msg ="No hay datos";
 
     useEffect( () => {
 
-        async function doFetch(type, discounts){
+        async function doFetch(type, discounts, itemsIdList){
             const db = getFirestore();
             const productsCollection = collection(db,'stock_MarketPlace');
-            const queryString = type === undefined ? 
-                (!discounts ? productsCollection : query(productsCollection, where("Descuento", "==", "Sí"))) : (!discounts ? query(productsCollection, where("Tipo", "==", type)): query(productsCollection, where("Tipo", "==", type), where("Descuento", "==", "Sí")));
+            const queryString = (itemsIdList.length > 0 || itemsIdList[0] === 'noHayCompra') ? (query(productsCollection, where(documentId(), "in", itemsIdList))) : ( type === undefined ? 
+            (!discounts ? productsCollection : query(productsCollection, where("Descuento", "==", "Sí"))) : (!discounts ? query(productsCollection, where("Tipo", "==", type)): query(productsCollection, where("Tipo", "==", type), where("Descuento", "==", "Sí"))));
             let mensaje;
             let toast = toastMsgPopUpNoTimer('',"Cargando productos",'info')
             try {
                 const data = await getDocs(queryString);  
                 let products = data.docs.map( (doc) => ({id: doc.id, ...doc.data()}));
                 console.log(products);
-                mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay datos";
+                mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay productos";
                 setStock(products);
                 return products;
             }catch(error){
@@ -33,9 +33,9 @@ const ItemListContainer = ({type, discounts}) => {
                 toast.close();   
             }
         }
-        doFetch(type, discounts);
+        doFetch(type, discounts, itemsIdList);
     }
-    , [type]);
+    , [type, itemsIdList]);
 
 
   return (
@@ -57,4 +57,4 @@ const ItemListContainer = ({type, discounts}) => {
   );
 }
 
-export default ItemListContainer;
+export default ItemList;
