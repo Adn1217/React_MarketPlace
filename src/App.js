@@ -1,5 +1,6 @@
 import './css/styles.css';
 import Header from './components/Header';
+import Load from './components/Load';
 import Suggested from './components/Suggested';
 import Discounts from './components/Discounts';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
             <Route exact path='/item/:id' element={<ItemDetailContainer />} />
             <Route exact path='/cart' element={<Cart />} />
+            <Route exact path='/load' element={<Load />} />
           </Routes>
           <Routes>
             <Route exact path='/item/:id' element={<Discounts />} />
