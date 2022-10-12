@@ -21,7 +21,6 @@ const ItemList = ({type, discounts, itemsIdList}) => {
             try {
                 const data = await getDocs(queryString);  
                 let products = data.docs.map( (doc) => ({id: doc.id, ...doc.data()}));
-                console.log(products);
                 mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay productos";
                 setStock(products);
                 return products;
@@ -35,7 +34,7 @@ const ItemList = ({type, discounts, itemsIdList}) => {
         }
         doFetch(type, discounts, itemsIdList);
     }
-    , [type, itemsIdList]);
+    , [type, discounts, itemsIdList]);
 
 
   return (

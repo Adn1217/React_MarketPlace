@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
 import {MsgPopUp, toastMsgPopUpNoTimer, ConfMsgPopUp} from '../utils/functions.js'
 import {CartContext} from './CartContext';
@@ -22,7 +22,7 @@ const UserForm = ({items, total}) => {
         let mailServer = document.getElementById("userServer").value.trim()
         let mail = mailUser +"@"+ mailServer;
 
-        if (nombres === '' || apellidos === '' || identity === '' || edad === '' || telephone == '' || mailUser == '' || mailServer == ''){
+        if (nombres === '' || apellidos === '' || identity === '' || edad === '' || telephone === '' || mailUser === '' || mailServer === ''){
             MsgPopUp('Información incompleta. No es posible procesar la orden.','', 'error')
             console.log("Información incompleta. No es posible procesar la orden.")
         } else {
@@ -66,7 +66,7 @@ const UserForm = ({items, total}) => {
         setSending(false);
         MsgPopUp('La orden fue cargada exitosamente con el id: '+orderId,'', 'success');
         let compras = cargarDataLocal("Compra");
-        compras.length == 0 && guardarDataLocal(itemsInCart, "Compra");
+        compras.length === 0 && guardarDataLocal(itemsInCart, "Compra");
         compras.length > 0 && guardarDataLocal([...compras,...itemsInCart], "Compra");
         clear();    
         return orderId;

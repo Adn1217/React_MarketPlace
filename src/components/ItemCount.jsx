@@ -52,7 +52,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
         if(Cantidad > 0 && seleccionados < Cantidad){
             CambiarSeleccionados(1);
             setearRestarOff(false);
-            setearSumarOff((seleccionados + 1 === Cantidad || availableStock - 1 == 0) ? true : false);
+            setearSumarOff((seleccionados + 1 === Cantidad || availableStock - 1 === 0) ? true : false);
         }else{
             setearSumarOff(true);
         }

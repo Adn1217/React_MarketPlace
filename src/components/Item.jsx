@@ -20,7 +20,7 @@ const Item = (props) => {
     detallesEnOrden.Precio = props.Precio;
     detallesEnOrden.Cantidad = props.Cantidad;
 
-    Object.keys(detallesEnOrden).map((key) => {
+    Object.keys(detallesEnOrden).forEach((key) => {
         let info =<li key={key}><strong>{key}:</strong> {props[key]}<br/></li>;
         if (key === "Precio"){
             info =<li key={key}><strong>{key}:</strong> ${moneda.format(props[key])}<br/></li>;
