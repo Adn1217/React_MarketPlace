@@ -7,7 +7,7 @@ import {toastMsgPopUp} from '../utils/functions.js'
 const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
 
     const [seleccionados, setSeleccionados] = useState(0);
-    const [availableStock, setAvailableStock] = useState(item.Cantidad);
+    const [availableStock, setAvailableStock] = useState(item.Disponibles);
     const [SumarOff, setSumarOff] = useState(true);
     const [RestarOff, setRestarOff] = useState(true);
     const [agregarOff, setAgregarOff] = useState(true);
@@ -15,7 +15,7 @@ const ItemCount = ({item, quantity, setQuantity, setItemCountOff}) => {
     const [claseSuma, setClaseSuma] = useState("col-md-3")
 
     const {cartItems, addItem} = useContext(CartContext);
-    let Cantidad = item.Cantidad;
+    let Cantidad = item.Disponibles;
     let selectedItems = cartItems.find((cartItem) => cartItem.id === item.id);
 
     useEffect (() => {
