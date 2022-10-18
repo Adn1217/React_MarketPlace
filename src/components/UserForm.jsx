@@ -68,7 +68,8 @@ const UserForm = ({items, total}) => {
         let compras = cargarDataLocal("Compra");
         compras.length === 0 && guardarDataLocal(itemsInCart, "Compra");
         compras.length > 0 && guardarDataLocal([...compras,...itemsInCart], "Compra");
-        clear();    
+        clear();
+        cleanForm();    
         return orderId;
     }
 

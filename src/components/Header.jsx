@@ -4,6 +4,7 @@ import CartWidget from './CartWidget'
 import {Link} from 'react-router-dom';
 
 const Header = () => {
+    const categories = ['Libros', 'Mascotas', 'Tecnologia'];
     return (
         <div>
             <header className="App-header">
@@ -29,10 +30,9 @@ const Header = () => {
                                         Categorías
                                     </Link>
                                     <ul className="dropdown-menu">
-                                        <li><Link to={'/category/Libros'} className="dropdown-item" >Libros</Link></li>
-                                        <li><Link to={'/category/Mascotas'} className="dropdown-item" href="/category/Mascotas">Mascotas</Link></li>
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li><Link to={'/category/Tecnologia'} className="dropdown-item">Tecnología</Link></li>
+                                        {categories.map( cat => {
+                                            return(<li><Link to={`/category/${cat}`} className="dropdown-item" >{cat}</Link></li>)
+                                        })}
                                     </ul>
                                 </li>
                             </ul>
