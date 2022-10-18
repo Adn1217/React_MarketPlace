@@ -6,7 +6,7 @@
         "Marca": "ACER",
         "Anio": 2021,
         "Precio": 1350000,
-        "Cantidad": 10,
+        "Disponibles": 10,
         "Detalle": {
             "Procesador": "Intel I7",
             "RAM": "12 GB",
@@ -24,7 +24,7 @@
         "Marca": "ASUS",
         "Anio": 2020,
         "Precio": 1100000,
-        "Cantidad": 1,
+        "Disponibles": 1,
         "Detalle": {
             "Procesador": "Intel I5",
             "RAM": "8 GB",
@@ -42,7 +42,7 @@
         "Marca": "LENOVO",
         "Anio": 2020,
         "Precio": 950000,
-        "Cantidad": 0,
+        "Disponibles": 0,
         "Detalle": {
             "Procesador": "AMD Ryzen 5",
             "RAM": "4 GB",
@@ -60,7 +60,7 @@
         "Editorial": "Pinguin",
         "Anio": 2018,
         "Precio": 55000,
-        "Cantidad": 20,
+        "Disponibles": 20,
         "Detalle": {
             "Autor": "Stephen King.",
             "Ranking": "5 estrellas.",
@@ -75,7 +75,7 @@
         "Editorial": "Books of America",
         "Anio": 2021,
         "Precio": 65000,
-        "Cantidad": 7,
+        "Disponibles": 7,
         "Detalle": {
             "Autor": "Jordan Peterson",
             "Ranking": "4 estrellas.",
@@ -90,7 +90,7 @@
         "Editorial": "Faith Words",
         "Anio": 2021,
         "Precio": 62000,
-        "Cantidad": 2,
+        "Disponibles": 2,
         "Detalle": {
             "Autor": "Joyce Meyer",
             "Ranking": "5 estrellas.",
@@ -105,7 +105,7 @@
         "Marca": "DELL",
         "Anio": 2021,
         "Precio": 1649000,
-        "Cantidad": 3,
+        "Disponibles": 3,
         "Detalle": {
             "Procesador": "AMD Ryzen 5",
             "RAM": "8 GB",
