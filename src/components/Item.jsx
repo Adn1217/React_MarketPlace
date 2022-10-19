@@ -32,13 +32,11 @@ const Item = (props) => {
 
     function itemSelection(id){
         setSelectedItemId(id);
-        // console.log("Se ha seleccionado el producto ", id);
     }
 
   return (
     <div className={descuento ? "card discount" : "card"}>
         { descuento && <div className="waterMark">
-                {/* Descuento */}
         </div>}
         <Link to={url} onClick={()=>itemSelection(id)}><img src={props.ImgName} className="card-img-top" alt="pcImage1"/></Link>
         <div className="card-body">
