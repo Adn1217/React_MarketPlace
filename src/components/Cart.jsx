@@ -34,7 +34,6 @@ const Cart = () => {
       clear();
       MsgPopUp('Se ha vaciado el carrito','','success');
       setShowUserForm(false);
-      console.log("Se ha vaciado el carrito");
     }
   }
 

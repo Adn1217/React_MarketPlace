@@ -21,14 +21,12 @@ const ItemList = ({type, discounts, itemsIdList}) => {
             try {
                 const data = await getDocs(queryString);  
                 let products = data.docs.map( (doc) => ({id: doc.id, ...doc.data()}));
-                mensaje = (products?.length>0) ? `Se han encontrado ${products.length} productos.`:"No hay productos";
                 setStock(products);
                 return products;
             }catch(error){
                 console.log("Ha ocurrido el siguiente error: ", error)
                 return error;
             }finally{
-                console.log("Se realizó la consulta de inventario.", mensaje);
                 toast.close();   
             }
         }

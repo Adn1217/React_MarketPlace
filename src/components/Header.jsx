@@ -31,7 +31,7 @@ const Header = () => {
                                     </Link>
                                     <ul className="dropdown-menu">
                                         {categories.map( cat => {
-                                            return(<li><Link to={`/category/${cat}`} className="dropdown-item" >{cat}</Link></li>)
+                                            return(<li key={`${cat}_item`}><Link to={`/category/${cat}`} className="dropdown-item" >{cat}</Link></li>)
                                         })}
                                     </ul>
                                 </li>

@@ -24,7 +24,6 @@ const UserForm = ({items, total}) => {
 
         if (nombres === '' || apellidos === '' || identity === '' || edad === '' || telephone === '' || mailUser === '' || mailServer === ''){
             MsgPopUp('Información incompleta. No es posible procesar la orden.','', 'error')
-            console.log("Información incompleta. No es posible procesar la orden.")
         } else {
             let confirmationProm = await ConfMsgPopUp(`¿Desea realizar la compra por ${total}?`,null,null,true);
             if (confirmationProm.isConfirmed){
